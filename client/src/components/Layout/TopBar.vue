@@ -1,9 +1,12 @@
 <template>
     <nav>
         <ul>
-            <router-link tag="li" to="/posts"
+            <router-link v-if="mainRoute" tag="li" to="/posts"
                 ><i class="material-icons">whatshot</i></router-link
             >
+            <li v-else @click="$router.go(-1)">
+                <i class="material-icons">arrow_back</i>
+            </li>
             <li v-if="isAuth">
                 <button @click="$emit('open', true)">
                     <i class="material-icons">menu</i>
@@ -17,8 +20,16 @@
 import { mapGetters } from 'vuex'
 export default {
     computed: {
-        ...mapGetters(['isAuth'])
-    }
+        ...mapGetters(['isAuth']),
+        mainRoute() {
+            let a = this.$route.path.split('/')
+            if (a.length > 2) {
+                return false
+            } else {
+                return true
+            }
+        },
+    },
 }
 </script>
 
