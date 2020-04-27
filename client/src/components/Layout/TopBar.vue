@@ -1,14 +1,14 @@
 <template>
     <nav>
         <ul>
+            <router-link tag="li" to="/posts"
+                ><i class="material-icons">whatshot</i></router-link
+            >
             <li v-if="isAuth">
                 <button @click="$emit('open', true)">
                     <i class="material-icons">menu</i>
                 </button>
             </li>
-            <router-link tag="li" to="/posts"
-                ><i class="material-icons">whatshot</i></router-link
-            >
         </ul>
     </nav>
 </template>

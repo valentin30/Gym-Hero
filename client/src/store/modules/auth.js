@@ -44,7 +44,6 @@ const actions = {
     logout({ dispatch }) {
         dispatch('auth', { token: null, userId: null })
         localStorage.clear()
-        router.push('/login')
     },
 
     autoLogout({ dispatch }) {

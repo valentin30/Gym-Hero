@@ -13,14 +13,10 @@
             </p>
         </div>
         <ul>
-            <li>
-                <i class="material-icons">add</i>
-                <p>Create Exercise</p>
-            </li>
-            <li>
-                <i class="material-icons">add</i>
-                <p>Create Exercise</p>
-            </li>
+            <router-link tag="li" @click.native="logout" to="/login">
+                <i class="material-icons">exit_to_app</i>
+                <p>Logout</p>
+            </router-link>
         </ul>
     </div>
 </template>
@@ -34,6 +30,12 @@ export default {
             },
         }
     },
+    methods:{
+        logout(){
+            this.$store.dispatch('logout')
+            this.$emit('close', false)
+        }
+    }
 }
 </script>
 

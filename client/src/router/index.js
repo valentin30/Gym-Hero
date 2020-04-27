@@ -15,6 +15,13 @@ const routes = [
     {
         path: '/posts',
         component: Posts,
+        beforeEnter: (to, from, next) => {
+            if (store.state.auth.token) {
+                next()
+            } else {
+                next('/login')
+            }
+        },
     },
     {
         path: '/workout',
