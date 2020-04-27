@@ -13,15 +13,16 @@
             </p>
         </div>
         <ul>
-            <router-link tag="li" @click.native="logout" to="/login">
+            <li @click="logoutAndRedirect">
                 <i class="material-icons">exit_to_app</i>
                 <p>Logout</p>
-            </router-link>
+            </li>
         </ul>
     </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
     data() {
         return {
@@ -31,8 +32,9 @@ export default {
         }
     },
     methods:{
-        logout(){
-            this.$store.dispatch('logout')
+        ...mapActions(['logout']),
+        logoutAndRedirect(){
+            this.logout()
             this.$emit('close', false)
         }
     }

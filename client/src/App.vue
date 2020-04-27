@@ -1,16 +1,23 @@
 <template>
     <div id="app">
+        <!-- Slot for Pages -->
         <transition
             mode="out-in"
-            enter-active-class="animated fadeInDown"
-            leave-active-class="animated fadeOutUpBig"
+            enter-active-class="animated fadeIn"
+            leave-active-class="animated fadeOut"
         >
-            <router-view @message="($event) => {
-                message = $event.message
-                header = $event.header
-                text = $event.text
-            }"></router-view>
+            <router-view
+                @message="
+                    $event => {
+                        message = $event.message
+                        header = $event.header
+                        text = $event.text
+                    }
+                "
+            ></router-view>
         </transition>
+        <!-- Slot for Pages -->
+        <!--  -->
         <!-- Layout -->
         <Nav v-if="isAuth"></Nav>
         <TopBar @open="isOpen = $event"></TopBar>
@@ -21,6 +28,7 @@
             <SlideMenu v-if="isOpen" @close="isOpen = $event"></SlideMenu>
         </transition>
         <!-- Layout -->
+        <!--  -->
         <!-- Message -->
         <transition
             enter-active-class="animated fadeInDown"
@@ -32,6 +40,7 @@
             </Message>
         </transition>
         <!-- Message -->
+        <!--  -->
         <!-- Backdrops -->
         <transition
             enter-active-class="animated slideInRight"
@@ -72,12 +81,12 @@ export default {
             text: 'Something went horribly wrong',
         }
     },
-    computed:{
-        ...mapGetters(['isAuth'])
+    computed: {
+        ...mapGetters(['isAuth']),
     },
-    created(){
+    created() {
         this.$store.dispatch('tryAutoLogin')
-    }
+    },
 }
 </script>
 

@@ -1,3 +1,5 @@
+import router from '@/router'
+
 const state = {
     userId: null,
     token: null,
@@ -44,6 +46,7 @@ const actions = {
     logout({ dispatch }) {
         dispatch('auth', { token: null, userId: null })
         localStorage.clear()
+        router.push('/login')
     },
 
     autoLogout({ dispatch }) {
