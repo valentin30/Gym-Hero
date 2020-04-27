@@ -47,18 +47,15 @@ const routes = [
     },
     {
         path: '/profile',
+        component: Profile,
+        beforeEnter: (to, from, next) => {
+            if (store.state.auth.token) {
+                next()
+            } else {
+                next('/login')
+            }
+        },
         children: [
-            {
-                path: '',
-                component: Profile,
-                beforeEnter: (to, from, next) => {
-                    if (store.state.auth.token) {
-                        next()
-                    } else {
-                        next('/login')
-                    }
-                },
-            },
             {
                 path: 'settings',
                 component: Settings,
@@ -80,7 +77,7 @@ const routes = [
             if (!store.state.auth.token) {
                 next()
             } else {
-                next('/')
+                next('/posts')
             }
         }    
     },
@@ -92,7 +89,7 @@ const routes = [
             if (!store.state.auth.token) {
                 next()
             } else {
-                next('/')
+                next('/posts')
             }
         } 
     },

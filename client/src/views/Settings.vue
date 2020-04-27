@@ -1,5 +1,5 @@
 <template>
-    <div></div>
+    <div>{{$route.slug}}</div>
 </template>
 
 <script>
@@ -9,6 +9,5 @@ export default {
             
         }
     },
-    
 }
 </script>

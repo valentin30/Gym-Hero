@@ -13,6 +13,14 @@
             </p>
         </div>
         <ul>
+            <router-link @click.native="$emit('close', false)" tag="li" to="/profile/settings">
+                <i class="material-icons">today</i>
+                <p>Workout Log</p>
+            </router-link>
+            <router-link @click.native="$emit('close', false)" tag="li" to="/profile/settings">
+                <i class="material-icons">settings</i>
+                <p>Settings</p>
+            </router-link>
             <li @click="logoutAndRedirect">
                 <i class="material-icons">exit_to_app</i>
                 <p>Logout</p>
@@ -31,13 +39,13 @@ export default {
             },
         }
     },
-    methods:{
+    methods: {
         ...mapActions(['logout']),
-        logoutAndRedirect(){
+        logoutAndRedirect() {
             this.logout()
             this.$emit('close', false)
-        }
-    }
+        },
+    },
 }
 </script>
 
@@ -92,7 +100,7 @@ p {
 }
 li {
     display: flex;
-    padding: 0.5rem;
+    padding: 0.25rem;
 }
 li i {
     font-size: 1.6rem;

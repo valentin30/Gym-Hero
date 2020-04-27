@@ -1,11 +1,11 @@
 <template>
     <div id="app">
         <!-- Slot for Pages -->
-        <transition
+        <!-- <transition
             mode="out-in"
             enter-active-class="animated fadeIn"
             leave-active-class="animated fadeOut"
-        >
+        > -->
             <router-view
                 @message="
                     $event => {
@@ -15,7 +15,7 @@
                     }
                 "
             ></router-view>
-        </transition>
+        <!-- </transition> -->
         <!-- Slot for Pages -->
         <!--  -->
         <!-- Layout -->
