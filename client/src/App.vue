@@ -20,12 +20,12 @@
         <!--  -->
         <!-- Layout -->
         <Nav v-if="isAuth"></Nav>
-        <TopBar @open="isOpen = $event"></TopBar>
+        <TopBar @open="isOpen = $event"/>
         <transition
             enter-active-class="animated slideInLeft"
             leave-active-class="animated fadeOutLeftBig"
         >
-            <SlideMenu v-if="isOpen" @close="isOpen = $event"></SlideMenu>
+            <SlideMenu v-if="isOpen" @close="isOpen = $event"/>
         </transition>
         <!-- Layout -->
         <!--  -->
@@ -46,13 +46,13 @@
             enter-active-class="animated slideInRight"
             leave-active-class="animated slideOutRight"
         >
-            <Backdrop v-if="isOpen" @close="isOpen = $event"></Backdrop>
+            <Backdrop v-if="isOpen" @close="isOpen = $event"/>
         </transition>
         <transition
             enter-active-class="animated slideInDown"
             leave-active-class="animated slideOutUp"
         >
-            <Backdrop v-if="message" @close="message = $event"></Backdrop>
+            <Backdrop v-if="message" @close="message = $event"/>
         </transition>
         <!-- Backdrops -->
     </div>

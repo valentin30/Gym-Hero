@@ -7,6 +7,8 @@ import Training from '../views/Training'
 import Login from '../views/Login'
 import Register from '../views/Register'
 import Settings from '../views/Settings'
+import Post from '../components/Post/Post'
+import PostList from '../components/Post/PostList'
 import store from '../store/index'
 
 Vue.use(VueRouter)
@@ -22,6 +24,31 @@ const routes = [
                 next('/login')
             }
         },
+        children: [
+            {
+                path: '',
+                component: PostList,
+                beforeEnter: (to, from, next) => {
+                    if (store.state.auth.token) {
+                        next()
+                    } else {
+                        next('/login')
+                    }
+                },
+            },
+            {
+                path: ':id',
+                component: Post,
+                name: 'Post',
+                beforeEnter: (to, from, next) => {
+                    if (store.state.auth.token) {
+                        next()
+                    } else {
+                        next('/login')
+                    }
+                },
+            },
+        ],
     },
     {
         path: '/workout',
@@ -79,7 +106,7 @@ const routes = [
             } else {
                 next('/posts')
             }
-        }    
+        },
     },
     {
         path: '/register',
@@ -91,11 +118,12 @@ const routes = [
             } else {
                 next('/posts')
             }
-        } 
+        },
     },
     {
-        path: '*', redirect: '/posts'
-    }
+        path: '*',
+        redirect: '/posts',
+    },
 ]
 
 const router = new VueRouter({

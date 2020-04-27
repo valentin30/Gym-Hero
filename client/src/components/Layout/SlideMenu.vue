@@ -13,9 +13,17 @@
             </p>
         </div>
         <ul>
-            <router-link @click.native="$emit('close', false)" tag="li" to="/profile/settings">
+            <router-link @click.native="$emit('close', false)" tag="li" to="/workout">
+                <i class="material-icons">fitness_center</i>
+                <p>Workout</p>
+            </router-link>
+            <router-link @click.native="$emit('close', false)" tag="li" to="/training">
                 <i class="material-icons">today</i>
                 <p>Workout Log</p>
+            </router-link>
+            <router-link @click.native="$emit('close', false)" tag="li" to="/profile/settings">
+                <i class="material-icons">person</i>
+                <p>Profile</p>
             </router-link>
             <router-link @click.native="$emit('close', false)" tag="li" to="/profile/settings">
                 <i class="material-icons">settings</i>

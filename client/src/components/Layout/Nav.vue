@@ -43,7 +43,7 @@ li {
     font-size: 2rem;
     padding: 0;
 }
-.router-link-exact-active {
+.router-link-active {
     background-color: rgb(0, 155, 135);
     color: white;
 }
