@@ -100,7 +100,7 @@ body {
     background-color: white;
 }
 #app {
-    margin: 4.5rem auto;
+    margin: 4.5rem auto 2rem;
     max-width: 700px;
     width: inherit;
     display: flex;

@@ -3,13 +3,13 @@ const { checkError, throwError } = require('../helpers/func')
 const jwt = require('jsonwebtoken')
 const { hash, compare } = require('bcrypt')
 
-exports.login = async(req, res, next) => {
+exports.login = async (req, res, next) => {
     const { email, password } = req.body
     let foundedUser
     User.findOne({ email })
         .then(user => {
             if (!user) {
-                throwError(404, 'Couldn\'t find a user with that email!')
+                throwError(404, "Couldn't find a user with that email!")
             }
             foundedUser = user
             return compare(password, user.password)
@@ -28,7 +28,7 @@ exports.login = async(req, res, next) => {
             )
             res.status(200).json({
                 token,
-                userId: foundedUser._id.toString(),
+                user: foundedUser,
             })
         })
         .catch(error => {
@@ -68,10 +68,11 @@ exports.signup = (req, res, next) => {
             )
             res.status(201).json({
                 token,
-                userId: user._id.toString(),
+                user,
             })
         })
         .catch(error => {
             next(checkError(error))
         })
 }
+

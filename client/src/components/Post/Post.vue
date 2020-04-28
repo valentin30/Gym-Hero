@@ -1,6 +1,6 @@
 <template>
     <div class="body">
-        <Spinner v-if="!post" />
+        <Spinner v-if="!post" class="spinner"/>
         <template v-else>
             <div>
                 <img :src="post.img" :alt="post.title" />
@@ -43,7 +43,11 @@ export default {
         }
     },
     created() {
-        fetch(`http://localhost:3000/posts/${this.$route.params.id}`)
+        fetch(`http://localhost:3000/posts/${this.$route.params.id}`,{
+            headers:{
+                'Authorization': this.$store.state.auth.token
+            }
+        })
             .then(response => response.json())
             .then(json => {
                 if (json.message) {
@@ -70,12 +74,15 @@ h3 {
     margin: 0;
 }
 div {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
     background-color: white;
     display: flex;
     max-width: 700px;
     flex-direction: column;
     margin-bottom: 1.5rem;
+}
+.spinner{
+    box-shadow: none;
 }
 .paragraph {
     padding: 1rem;

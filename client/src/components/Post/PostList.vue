@@ -21,7 +21,11 @@ export default {
         }
     },
     created() {
-        fetch('http://localhost:3000/posts')
+        fetch('http://localhost:3000/posts',{
+            headers:{
+                'Authorization': this.$store.state.auth.token
+            }
+        })
             .then(response => response.json())
             .then(json => {
                 if (json.message) {
@@ -46,7 +50,7 @@ ul {
 }
 @media (min-width: 700px) {
     ul {
-        grid-template-columns: 21rem 21rem;
+        grid-template-columns: 20rem 20rem;
         grid-column-gap: 1rem;
     }
 }

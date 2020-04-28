@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-view/>
+        <router-view @message="$emit('message',$event)"/>
     </div>
 </template>
 

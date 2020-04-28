@@ -9,7 +9,10 @@ import Register from '../views/Register'
 import Settings from '../views/Settings'
 import Post from '../components/Post/Post'
 import PostList from '../components/Post/PostList'
+import ProfileComponent from '../components/Profile/Profile'
+import SettingsComponent from '../components/Settings/Settings'
 import store from '../store/index'
+
 
 Vue.use(VueRouter)
 
@@ -84,6 +87,17 @@ const routes = [
         },
         children: [
             {
+                path: '',
+                component: ProfileComponent,
+                beforeEnter: (to, from, next) => {
+                    if (store.state.auth.token) {
+                        next()
+                    } else {
+                        next('/login')
+                    }
+                }
+            },
+            {
                 path: 'settings',
                 component: Settings,
                 beforeEnter: (to, from, next) => {
@@ -93,6 +107,12 @@ const routes = [
                         next('/login')
                     }
                 },
+                children:[
+                    {
+                        path:'',
+                        component: SettingsComponent
+                    }
+                ]
             },
         ],
     },

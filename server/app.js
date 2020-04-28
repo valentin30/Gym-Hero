@@ -8,6 +8,7 @@ const { fileStorage, fileFilter } = require('./helpers/multerConfig')
 
 const authRoutes = require('./routes/auth')
 const postRoutes = require('./routes/posts')
+const userRoutes = require('./routes/user')
 
 const app = express()
 
@@ -27,6 +28,7 @@ app.use(
 app.use('/images', express.static(path.join(__dirname, 'images')))
 
 app.use('/auth', authRoutes)
+app.use('/user', userRoutes)
 app.use('/posts', postRoutes)
 
 app.use((error, req, res, next) => {

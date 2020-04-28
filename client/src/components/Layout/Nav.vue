@@ -56,8 +56,13 @@ li:hover {
     padding: 0;
 }
 li {
-    padding: 14px 0 4px;
+    padding: 10px 0 2px;
     display: block;
     margin: 0;
+}
+@media(min-width: 700px){
+    nav{
+        display: none;
+    }
 }
 </style>

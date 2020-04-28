@@ -1,5 +1,8 @@
 <template>
-    <div>{{$route.slug}}</div>
+    <div>
+        <router-view @message=" $emit('message',$event) ">
+        </router-view>
+    </div>
 </template>
 
 <script>

@@ -56,13 +56,10 @@ export default {
                     const oneHour = 60 * 60 * 1000
                     const expirationDate = new Date(now.getTime() + oneHour)
                     localStorage.setItem('token', data.token)
-                    localStorage.setItem('userId', data.userId)
                     localStorage.setItem('expiresIn', expirationDate)
                     this.$store.dispatch('autoLogout')
-                    this.$store.dispatch('auth', {
-                        token: data.token,
-                        userId: data.userId,
-                    })
+                    this.$store.commit('setToken', data.token)
+                    this.$store.commit('setUser', data.user)
                     this.$router.push('/')
                 })
         },
