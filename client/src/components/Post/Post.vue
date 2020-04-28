@@ -1,6 +1,6 @@
 <template>
     <div class="body">
-        <Spinner v-if="!post" />
+        <Spinner v-if="!post" class="spinner" />
         <template v-else>
             <div>
                 <img :src="post.img" :alt="post.title" />
@@ -43,17 +43,19 @@ export default {
         }
     },
     created() {
-        fetch(`http://localhost:3000/posts/${this.$route.params.id}`)
+        fetch(`http://localhost:3000/posts/${this.$route.params.id}`, {
+            headers: {
+                Authorization: this.$store.state.auth.token,
+            },
+        })
             .then(response => response.json())
             .then(json => {
                 if (json.message) {
-                    return this.$emit('message', {
-                        message: true,
-                        header: 'Oops',
-                        text: 'Something went wrong!',
+                    return this.$store.dispatch('displayMessage', {
+                        header: 'Oops!',
+                        message: 'Something went wrong.',
                     })
                 }
-                console.log(json)
                 this.post = json.post
             })
     },
@@ -77,6 +79,9 @@ div {
     flex-direction: column;
     margin-bottom: 1.5rem;
 }
+.spinner {
+    box-shadow: none;
+}
 .paragraph {
     padding: 1rem;
     font-size: 1.2rem;
@@ -87,8 +92,10 @@ div {
 p {
     margin: 0;
 }
-.body{
+.body {
     padding: 0.75rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
     box-shadow: none;
 }
 @media (min-width: 768px) {

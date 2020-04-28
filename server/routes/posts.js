@@ -1,13 +1,14 @@
 const { Router } = require('express')
 
 const postController = require('../controllers/posts')
+const authCheck = require('../middleware/authCheck')
 
 const router = Router()
 
-router.get('/', postController.getPosts)
-router.get('/:id', postController.getPost)
+router.get('/', authCheck, postController.getPosts)
+router.get('/:id', authCheck, postController.getPost)
 
-router.post('/', postController.createPost)
+router.post('/', authCheck, postController.createPost)
 
 
 module.exports = router

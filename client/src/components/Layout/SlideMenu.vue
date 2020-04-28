@@ -5,14 +5,18 @@
                 <i class="material-icons">clear</i>
             </button>
             <img
-                src="https://previews.123rf.com/images/inegvin/inegvin1701/inegvin170100077/69882112-user-sign-icon-person-symbol-human-avatar-.jpg"
+                :src="'http://localhost:3000/' + user.imageUrl"
                 alt="avatar"
             />
             <p>
-                <b>{{ User.name }}</b>
+                <b>{{ user.name }}</b>
             </p>
         </div>
         <ul>
+            <router-link @click.native="$emit('close', false)" tag="li" to="/posts">
+                <i class="material-icons">home</i>
+                <p>Home</p>
+            </router-link>
             <router-link @click.native="$emit('close', false)" tag="li" to="/workout">
                 <i class="material-icons">fitness_center</i>
                 <p>Workout</p>
@@ -21,7 +25,7 @@
                 <i class="material-icons">today</i>
                 <p>Workout Log</p>
             </router-link>
-            <router-link @click.native="$emit('close', false)" tag="li" to="/profile/settings">
+            <router-link @click.native="$emit('close', false)" tag="li" to="/profile">
                 <i class="material-icons">person</i>
                 <p>Profile</p>
             </router-link>
@@ -38,14 +42,15 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
     data() {
         return {
-            User: {
-                name: 'Valentin',
-            },
+            
         }
+    },
+    computed:{
+        ...mapGetters(['user']),
     },
     methods: {
         ...mapActions(['logout']),
@@ -81,6 +86,7 @@ export default {
 img {
     border-radius: 50%;
     max-width: 75px;
+    max-height: 75px;
 }
 button {
     background-color: white;
@@ -113,5 +119,10 @@ li {
 li i {
     font-size: 1.6rem;
     padding-right: 0.5rem;
+}
+@media(min-width: 800px){
+    .body{
+        width: 25%;
+    }
 }
 </style>

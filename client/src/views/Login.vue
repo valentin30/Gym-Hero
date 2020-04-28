@@ -45,10 +45,9 @@ export default {
                             this.email = ''
                         }
                         this.password = ''
-                        return this.$emit('message', {
-                            message: true,
-                            header: 'Oops',
-                            text: data.message || 'Something went wrong',
+                        return this.$store.dispatch('displayMessage', {
+                            header: 'Oops!',
+                            message: data.message + '.'
                         })
                     }
                     console.log(data)
@@ -56,14 +55,11 @@ export default {
                     const oneHour = 60 * 60 * 1000
                     const expirationDate = new Date(now.getTime() + oneHour)
                     localStorage.setItem('token', data.token)
-                    localStorage.setItem('userId', data.userId)
                     localStorage.setItem('expiresIn', expirationDate)
                     this.$store.dispatch('autoLogout')
-                    this.$store.dispatch('auth', {
-                        token: data.token,
-                        userId: data.userId,
-                    })
-                    this.$router.push('/')
+                    this.$store.commit('setToken', data.token)
+                    this.$store.commit('setUser', data.user)
+                    this.$router.push('/posts')
                 })
         },
     },

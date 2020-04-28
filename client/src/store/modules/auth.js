@@ -1,50 +1,60 @@
 import router from '@/router'
 
 const state = {
-    userId: null,
     token: null,
+    user:null
 }
 const getters = {
-    userId({ userId }) {
-        return userId
-    },
     token({ token }) {
         return token
     },
-    isAuth({ token }) {
-        return token !== null
+    isAuth({ user }) {
+        return user !== null
     },
+    user({ user }){
+        return user
+    }
 }
 const mutations = {
-    setUserId(state, payload) {
-        state.userId = payload
-    },
     setToken(state, payload) {
         state.token = payload
     },
+    setUser(state, payload){
+        state.user = payload
+    }
 }
 const actions = {
-    auth({ commit }, { token, userId }) {
-        commit('setToken', token)
-        commit('setUserId', userId)
+    getUser({ state, commit }, token){
+        fetch('http://localhost:3000/user',{
+            headers:{
+                'Authorization': token
+            }
+        })
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                commit('setUser',json.user)
+            })
     },
-
-    tryAutoLogin({ dispatch }) {
+    tryAutoLogin({ dispatch, commit }) {
         const token = localStorage.getItem('token')
+        console.log(!token)
         if (!token) {
-            return
+            return localStorage.clear()
         }
-        const expirationDate = localStorage.getItem('expiresIn')
-        const userId = localStorage.getItem('userId')
+        const expirationDate = new Date (localStorage.getItem('expiresIn'))
         const now = new Date()
         if (now >= expirationDate) {
-            return
+            return localStorage.clear()
         }
-        dispatch('auth', { token, userId })
+        dispatch('getUser',token)
+        commit('setToken', token)
+
     },
 
-    logout({ dispatch }) {
-        dispatch('auth', { token: null, userId: null })
+    logout({ commit }) {
+        commit('setToken', null)
+        commit('setUser',null)
         localStorage.clear()
         router.push('/login')
     },
@@ -52,7 +62,7 @@ const actions = {
     autoLogout({ dispatch }) {
         setTimeout(() => {
             dispatch('logout')
-        }, 3600 * 1000)
+        }, 60 * 60 * 1000)
     },
 }
 export default {

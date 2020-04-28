@@ -1,11 +1,25 @@
 <template>
     <div class="body">
-        <slot></slot>
+        <p>{{header}}</p>
+        <p>{{message}}</p>
         <div class="footer">
-            <button @click="$emit('close', false)">Okay</button>
+            <button @click="closeMessage">Okay</button>
         </div>
     </div>
 </template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+export default {
+    computed:{
+        ...mapGetters(['isAuth','renderMessage','message','header']),
+    },
+    methods: {
+        ...mapActions(['closeMessage'])
+    },
+}
+</script>
+
 <style scoped>
 .body {
     position: fixed;
