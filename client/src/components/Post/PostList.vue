@@ -29,13 +29,11 @@ export default {
             .then(response => response.json())
             .then(json => {
                 if (json.message) {
-                    return this.$emit('message', {
-                        message: true,
-                        header: 'Oops',
-                        text: 'Something went wrong!',
+                    return this.$store.dispatch('displayMessage', {
+                        header: 'Oops!',
+                        message: 'Something went wrong.',
                     })
                 }
-                console.log(json)
                 this.posts = json.posts
             })
     },

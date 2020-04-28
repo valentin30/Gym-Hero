@@ -5,7 +5,7 @@
                 <i class="material-icons">clear</i>
             </button>
             <img
-                src="https://previews.123rf.com/images/inegvin/inegvin1701/inegvin170100077/69882112-user-sign-icon-person-symbol-human-avatar-.jpg"
+                :src="'http://localhost:3000/' + user.imageUrl"
                 alt="avatar"
             />
             <p>
@@ -86,6 +86,7 @@ export default {
 img {
     border-radius: 50%;
     max-width: 75px;
+    max-height: 75px;
 }
 button {
     background-color: white;

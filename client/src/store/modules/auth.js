@@ -25,7 +25,7 @@ const mutations = {
 }
 const actions = {
     getUser({ state, commit }, token){
-        fetch('http://localhost:3000/auth/user',{
+        fetch('http://localhost:3000/user',{
             headers:{
                 'Authorization': token
             }
@@ -38,13 +38,14 @@ const actions = {
     },
     tryAutoLogin({ dispatch, commit }) {
         const token = localStorage.getItem('token')
+        console.log(!token)
         if (!token) {
-            return
+            return localStorage.clear()
         }
-        const expirationDate = localStorage.getItem('expiresIn')
+        const expirationDate = new Date (localStorage.getItem('expiresIn'))
         const now = new Date()
         if (now >= expirationDate) {
-            return
+            return localStorage.clear()
         }
         dispatch('getUser',token)
         commit('setToken', token)
@@ -61,7 +62,7 @@ const actions = {
     autoLogout({ dispatch }) {
         setTimeout(() => {
             dispatch('logout')
-        }, 3600 * 1000)
+        }, 60 * 60 * 1000)
     },
 }
 export default {

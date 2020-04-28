@@ -1,6 +1,6 @@
 <template>
     <div class="body">
-        <Spinner v-if="!post" class="spinner"/>
+        <Spinner v-if="!post" class="spinner" />
         <template v-else>
             <div>
                 <img :src="post.img" :alt="post.title" />
@@ -43,21 +43,19 @@ export default {
         }
     },
     created() {
-        fetch(`http://localhost:3000/posts/${this.$route.params.id}`,{
-            headers:{
-                'Authorization': this.$store.state.auth.token
-            }
+        fetch(`http://localhost:3000/posts/${this.$route.params.id}`, {
+            headers: {
+                Authorization: this.$store.state.auth.token,
+            },
         })
             .then(response => response.json())
             .then(json => {
                 if (json.message) {
-                    return this.$emit('message', {
-                        message: true,
-                        header: 'Oops',
-                        text: 'Something went wrong!',
+                    return this.$store.dispatch('displayMessage', {
+                        header: 'Oops!',
+                        message: 'Something went wrong.',
                     })
                 }
-                console.log(json)
                 this.post = json.post
             })
     },
@@ -74,14 +72,14 @@ h3 {
     margin: 0;
 }
 div {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
     display: flex;
     max-width: 700px;
     flex-direction: column;
     margin-bottom: 1.5rem;
 }
-.spinner{
+.spinner {
     box-shadow: none;
 }
 .paragraph {
@@ -94,8 +92,10 @@ div {
 p {
     margin: 0;
 }
-.body{
+.body {
     padding: 0.75rem;
+    margin-bottom: 0;
+    padding-bottom: 0;
     box-shadow: none;
 }
 @media (min-width: 768px) {

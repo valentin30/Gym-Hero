@@ -45,10 +45,9 @@ export default {
                             this.email = ''
                         }
                         this.password = ''
-                        return this.$emit('message', {
-                            message: true,
-                            header: 'Oops',
-                            text: data.message || 'Something went wrong',
+                        return this.$store.dispatch('displayMessage', {
+                            header: 'Oops!',
+                            message: data.message + '.'
                         })
                     }
                     console.log(data)
@@ -60,7 +59,7 @@ export default {
                     this.$store.dispatch('autoLogout')
                     this.$store.commit('setToken', data.token)
                     this.$store.commit('setUser', data.user)
-                    this.$router.push('/')
+                    this.$router.push('/posts')
                 })
         },
     },

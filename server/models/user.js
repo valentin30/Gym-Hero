@@ -21,21 +21,13 @@ const userSchema = Schema({
         type: Number,
         default: 0,
     },
-    startingWeight: {
-        type: Number,
-        default: 0,
-    },
     weight: {
         type: Number,
         default: 0,
     },
-    goalWeight: {
-        type: Number,
-        default: 0,
-    },
-    goal: {
-        type: String,
-        default: 'Maintain weight',
+    imageUrl:{
+        type:String,
+        default: 'images/avatar.png'
     },
     dateOfBirth: {
         type: String,

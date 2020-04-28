@@ -6,26 +6,18 @@
             enter-active-class="animated fadeIn"
             leave-active-class="animated fadeOut"
         > -->
-            <router-view
-                @message="
-                    $event => {
-                        message = $event.message
-                        header = $event.header
-                        text = $event.text
-                    }
-                "
-            ></router-view>
+        <router-view />
         <!-- </transition> -->
         <!-- Slot for Pages -->
         <!--  -->
         <!-- Layout -->
-        <Nav v-if="isAuth"></Nav>
-        <TopBar @open="isOpen = $event"/>
+        <Nav v-if="isAuth && mainRoute"></Nav>
+        <TopBar @open="isOpen = $event" />
         <transition
             enter-active-class="animated slideInLeft"
             leave-active-class="animated fadeOutLeftBig"
         >
-            <SlideMenu v-if="isOpen" @close="isOpen = $event"/>
+            <SlideMenu v-if="isOpen" @close="isOpen = $event" />
         </transition>
         <!-- Layout -->
         <!--  -->
@@ -34,10 +26,7 @@
             enter-active-class="animated fadeInDown"
             leave-active-class="animated fadeOutUpBig"
         >
-            <Message v-if="message" @close="message = $event">
-                <p>{{ header }}</p>
-                <p>{{ text }}</p>
-            </Message>
+            <Message v-if="renderMessage" />
         </transition>
         <!-- Message -->
         <!--  -->
@@ -46,13 +35,16 @@
             enter-active-class="animated slideInRight"
             leave-active-class="animated slideOutRight"
         >
-            <Backdrop v-if="isOpen" @close="isOpen = $event"/>
+            <Backdrop v-if="isOpen" @close="isOpen = $event" />
         </transition>
         <transition
             enter-active-class="animated slideInDown"
             leave-active-class="animated slideOutUp"
         >
-            <Backdrop v-if="message" @close="message = $event"/>
+            <Backdrop
+                v-if="renderMessage"
+                @close="$store.dispatch('closeMessage')"
+            />
         </transition>
         <!-- Backdrops -->
     </div>
@@ -76,13 +68,19 @@ export default {
     data() {
         return {
             isOpen: false,
-            message: false,
-            header: 'Oops!',
-            text: 'Something went horribly wrong',
         }
     },
     computed: {
-        ...mapGetters(['isAuth']),
+        ...mapGetters(['isAuth', 'renderMessage', 'message', 'header']),
+
+        mainRoute() {
+            let a = this.$route.path.split('/')
+            if (a.length > 2) {
+                return false
+            } else {
+                return true
+            }
+        },
     },
     created() {
         this.$store.dispatch('tryAutoLogin')

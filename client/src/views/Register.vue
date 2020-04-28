@@ -60,10 +60,9 @@ export default {
                         if ((data.status = 422)) {
                             this.email = null
                         }
-                        return this.$emit('message', {
-                            message: true,
-                            header: 'Oops',
-                            text: data.message || 'Something went wrong',
+                        return this.$store.dispatch('displayMessage', {
+                            header: 'Oops!',
+                            message: data.message + '.'
                         })
                     }
                     console.log(data)

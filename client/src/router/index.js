@@ -11,107 +11,103 @@ import Post from '../components/Post/Post'
 import PostList from '../components/Post/PostList'
 import ProfileComponent from '../components/Profile/Profile'
 import SettingsComponent from '../components/Settings/Settings'
+import Photo from '../components/Settings/Photo'
+import Name from '../components/Settings/Name'
+import Height from '../components/Settings/Height'
+import Weight from '../components/Settings/Weight'
+import DateOfBirth from '../components/Settings/Date'
+import Gender from '../components/Settings/Gender'
 import store from '../store/index'
 
-
 Vue.use(VueRouter)
+
+const isLoggedIn = (to, from, next) => {
+    if (store.state.auth.token) {
+        next()
+    } else {
+        next('/login')
+    }
+}
 
 const routes = [
     {
         path: '/posts',
         component: Posts,
-        beforeEnter: (to, from, next) => {
-            if (store.state.auth.token) {
-                next()
-            } else {
-                next('/login')
-            }
-        },
+        beforeEnter: isLoggedIn,
         children: [
             {
                 path: '',
                 component: PostList,
-                beforeEnter: (to, from, next) => {
-                    if (store.state.auth.token) {
-                        next()
-                    } else {
-                        next('/login')
-                    }
-                },
+                beforeEnter: isLoggedIn,
             },
             {
                 path: ':id',
                 component: Post,
                 name: 'Post',
-                beforeEnter: (to, from, next) => {
-                    if (store.state.auth.token) {
-                        next()
-                    } else {
-                        next('/login')
-                    }
-                },
+                beforeEnter: isLoggedIn,
             },
         ],
     },
     {
         path: '/workout',
         component: Workout,
-        beforeEnter: (to, from, next) => {
-            if (store.state.auth.token) {
-                next()
-            } else {
-                next('/login')
-            }
-        },
+        beforeEnter: isLoggedIn,
     },
     {
         path: '/training',
         component: Training,
-        beforeEnter: (to, from, next) => {
-            if (store.state.auth.token) {
-                next()
-            } else {
-                next('/login')
-            }
-        },
+        beforeEnter: isLoggedIn,
     },
     {
         path: '/profile',
         component: Profile,
-        beforeEnter: (to, from, next) => {
-            if (store.state.auth.token) {
-                next()
-            } else {
-                next('/login')
-            }
-        },
+        beforeEnter: isLoggedIn,
         children: [
             {
                 path: '',
                 component: ProfileComponent,
-                beforeEnter: (to, from, next) => {
-                    if (store.state.auth.token) {
-                        next()
-                    } else {
-                        next('/login')
-                    }
-                }
+                beforeEnter: isLoggedIn
             },
             {
                 path: 'settings',
                 component: Settings,
-                beforeEnter: (to, from, next) => {
-                    if (store.state.auth.token) {
-                        next()
-                    } else {
-                        next('/login')
-                    }
-                },
+                beforeEnter: isLoggedIn,
                 children:[
                     {
                         path:'',
-                        component: SettingsComponent
-                    }
+                        component: SettingsComponent,
+                        beforeEnter: isLoggedIn
+                    },
+                    {
+                        path: 'photo',
+                        component: Photo,
+                        beforeEnter: isLoggedIn,
+                    },
+                    {
+                        path: 'name',
+                        component: Name,
+                        beforeEnter: isLoggedIn,
+                    },
+                    {
+                        path: 'height',
+                        component: Height,
+                        beforeEnter: isLoggedIn,
+                    },
+                    {
+                        path: 'weight',
+                        component: Weight,
+                        beforeEnter: isLoggedIn,
+                    },
+                    {
+                        path: 'date',
+                        component: DateOfBirth,
+                        beforeEnter: isLoggedIn,
+                    },
+                    {
+                        path: 'gender',
+                        component: Gender,
+                        beforeEnter: isLoggedIn,
+                    },
                 ]
             },
         ],
@@ -139,10 +135,6 @@ const routes = [
                 next('/posts')
             }
         },
-    },
-    {
-        path: '*',
-        redirect: '/posts',
     },
 ]
 
