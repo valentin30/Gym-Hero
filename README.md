@@ -1,4 +1,4 @@
-# The Gym Hero
+# Gym Hero
 
 Here you can read articles on healty lifestyle and training.
 
