@@ -1,8 +1,6 @@
 <template>
     <div class="component-body">
-        <div class="exercise" 
-            @click="$store.commit('setSelected',exercise)"
-        >
+        <div class="exercise" @click="$store.commit('setSelected', exercise)">
             <div>
                 <img :src="exercise.imageUrl" alt="img" />
             </div>
@@ -11,7 +9,11 @@
                 <p>{{ muscles }}</p>
             </div>
             <div class="arrow">
-                <i v-if="$store.getters.selected === exercise" class="material-icons">keyboard_arrow_up</i>
+                <i
+                    v-if="$store.getters.selected === exercise"
+                    class="material-icons"
+                    >keyboard_arrow_up</i
+                >
                 <i v-else class="material-icons">keyboard_arrow_down</i>
             </div>
         </div>
@@ -42,9 +44,7 @@
             <div class="reps-weight">
                 <template v-for="(set, index) in setsCount">
                     <div :key="set">
-                        <p v-if="setsType === 'Ramped'">
-                            {{ set }}.
-                        </p>
+                        <p v-if="setsType === 'Ramped'">{{ set }}.</p>
                         <input
                             v-else
                             type="number"
@@ -68,7 +68,10 @@
                 <button class="success" :disabled="disable" @click="submit">
                     Add
                 </button>
-                <button class="reject" @click="$store.commit('setSelected',exercise)">
+                <button
+                    class="reject"
+                    @click="$store.commit('setSelected', exercise)"
+                >
                     Close
                 </button>
             </div>
@@ -170,7 +173,7 @@ img {
     font-size: 1rem;
     color: #999;
 }
-.arrow{
+.arrow {
     flex-grow: 1;
 }
 .sets {
@@ -236,8 +239,8 @@ button {
     justify-content: flex-end;
     padding: 1rem 1rem 0.5rem;
 }
-i{
-    color:rgb(0,155,135);
+i {
+    color: rgb(0, 155, 135);
     float: right;
     padding: 0 0.5rem;
 }

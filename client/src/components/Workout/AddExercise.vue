@@ -8,7 +8,7 @@
                     <i class="material-icons">search</i>
                     <input
                         type="text"
-                        placeholder="Searching for a specific exercise?"
+                        placeholder="Searching for an exercise?"
                         v-model="filter"
                     />
                 </div>
@@ -82,10 +82,11 @@ export default {
     left: 0;
     right: 0;
     margin: auto;
+    max-width: 500px;
     background-color: white;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    z-index: 2;
+    z-index: 1.5;
 }
 p {
     text-align: center;

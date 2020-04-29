@@ -73,8 +73,8 @@ export default {
 
 <style scoped>
 .section {
-    max-height: 150px;
     overflow: scroll;
+    max-height: 150px;
 }
 .some {
     max-width: 400px;
