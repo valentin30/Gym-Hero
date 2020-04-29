@@ -6,7 +6,7 @@ exports.getExercises = (req, res, next) => {
         .then(exercises => {
             res.status(200).json({ exercises })
         })
-        .catch(error => next(checkError(error)))    
+        .catch(error => next(checkError(error)))
 }
 
 exports.createExercise = (req, res, next) => {

@@ -147,4 +147,29 @@ input {
 *:focus {
     outline: none;
 }
+.settings-body {
+    max-width: 400px;
+    text-align: center;
+    margin: auto;
+}
+.settings-header {
+    font-size: 1.6rem;
+    color: #555;
+}
+.settings-text {
+    color: #555;
+}
+.settings-input {
+    width: 100%;
+}
+.settings-button {
+    width: 100%;
+    background-color: rgb(0, 155, 135);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
+}
 </style>
