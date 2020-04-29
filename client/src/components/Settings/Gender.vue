@@ -53,10 +53,12 @@ export default {
     margin:0;
     border-radius: 4px;
     font-size: 1.2rem;
+    border: 1px solid white;
+
 }
 .selected{
     background-color: whitesmoke;
-    border: 1px solid rgb(207,207,207);
+    border-color: rgb(207,207,207);
     color: rgb(0,155,135);
 }
 </style>

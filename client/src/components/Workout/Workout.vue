@@ -4,3 +4,4 @@
         <router-link to="/workout/add-exercise">hello</router-link>    
     </div>
 </template>
+
