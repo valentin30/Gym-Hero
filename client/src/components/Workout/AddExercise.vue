@@ -3,12 +3,18 @@
         <Spinner v-if="!allExercises" />
         <template v-else>
             <p class="settings-header">Select an exercise</p>
-            <Exercise
-                v-for="exercise in allExercises"
-                :class="{ 'selected-exercise': $store.getters.selected === exercise }"
-                :key="exercise.name"
-                :exercise="exercise"
-            />
+            <div>
+                <Exercise
+                    v-for="(exercise, index) in allExercises"
+                    @click.native="$event.target.scrollIntoView(index > 4)"
+                    :class="{
+                        'selected-exercise':
+                            $store.getters.selected === exercise,
+                    }"
+                    :key="exercise.name"
+                    :exercise="exercise"
+                />
+            </div>
         </template>
     </div>
 </template>
