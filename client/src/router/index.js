@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Posts from '../views/Posts'
 import Profile from '../views/Profile'
-import Workout from '../views/Workout'
+import WorkoutPage from '../views/Workout'
 import Training from '../views/Training'
 import Login from '../views/Login'
 import Register from '../views/Register'
@@ -17,6 +17,8 @@ import Height from '../components/Settings/Height'
 import Weight from '../components/Settings/Weight'
 import DateOfBirth from '../components/Settings/Date'
 import Gender from '../components/Settings/Gender'
+import Workout from '../components/Workout/Workout'
+import AddExercise from '../components/Workout/AddExercise'
 import store from '../store/index'
 
 Vue.use(VueRouter)
@@ -50,8 +52,20 @@ const routes = [
     },
     {
         path: '/workout',
-        component: Workout,
+        component: WorkoutPage,
         beforeEnter: isLoggedIn,
+        children: [
+            {
+                path: '',
+                component: Workout,
+                beforeEnter: isLoggedIn,
+            },
+            {
+                path: 'add-exercise',
+                component: AddExercise,
+                beforeEnter: isLoggedIn,
+            },
+        ],
     },
     {
         path: '/training',
@@ -66,17 +80,17 @@ const routes = [
             {
                 path: '',
                 component: ProfileComponent,
-                beforeEnter: isLoggedIn
+                beforeEnter: isLoggedIn,
             },
             {
                 path: 'settings',
                 component: Settings,
                 beforeEnter: isLoggedIn,
-                children:[
+                children: [
                     {
-                        path:'',
+                        path: '',
                         component: SettingsComponent,
-                        beforeEnter: isLoggedIn
+                        beforeEnter: isLoggedIn,
                     },
                     {
                         path: 'photo',
@@ -108,7 +122,7 @@ const routes = [
                         component: Gender,
                         beforeEnter: isLoggedIn,
                     },
-                ]
+                ],
             },
         ],
     },

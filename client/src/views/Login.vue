@@ -47,7 +47,7 @@ export default {
                         this.password = ''
                         return this.$store.dispatch('displayMessage', {
                             header: 'Oops!',
-                            message: data.message + '.'
+                            message: data.message + '.',
                         })
                     }
                     console.log(data)
@@ -94,5 +94,9 @@ button {
 a {
     color: rgb(0, 155, 135);
     font-weight: bold;
+}
+input {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 </style>
