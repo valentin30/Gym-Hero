@@ -88,9 +88,10 @@ export default {
     padding-left: 0.2rem;
 }
 img {
-    border-radius: 50%;
+    vertical-align: middle;
     max-width: 75px;
     max-height: 75px;
+    border-radius: 50%;
 }
 button {
     background-color: white;

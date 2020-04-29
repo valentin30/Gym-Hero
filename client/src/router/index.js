@@ -34,6 +34,10 @@ const isLoggedIn = (to, from, next) => {
 
 const routes = [
     {
+        path:'/',
+        redirect:'/posts'
+    },
+    {
         path: '/posts',
         component: Posts,
         beforeEnter: isLoggedIn,
