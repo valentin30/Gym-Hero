@@ -10,6 +10,10 @@
                 <p>{{ exercise.name }}</p>
                 <p>{{ muscles }}</p>
             </div>
+            <div class="arrow">
+                <i v-if="$store.getters.selected === exercise" class="material-icons">keyboard_arrow_up</i>
+                <i v-else class="material-icons">keyboard_arrow_down</i>
+            </div>
         </div>
         <template v-if="$store.getters.selected === exercise">
             <div class="sets">
@@ -166,7 +170,9 @@ img {
     font-size: 1rem;
     color: #999;
 }
-
+.arrow{
+    flex-grow: 1;
+}
 .sets {
     width: 100%;
     display: flex;
@@ -229,5 +235,10 @@ button {
     display: flex;
     justify-content: flex-end;
     padding: 1rem 1rem 0.5rem;
+}
+i{
+    color:rgb(0,155,135);
+    float: right;
+    padding: 0 0.5rem;
 }
 </style>

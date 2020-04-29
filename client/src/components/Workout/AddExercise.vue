@@ -2,11 +2,26 @@
     <div class="body">
         <Spinner v-if="!allExercises" />
         <template v-else>
-            <p class="settings-header">Select an exercise</p>
-            <div>
+            <div class="head">
+                <p class="settings-header">Select an exercise</p>
+                <div class="search">
+                    <i class="material-icons">search</i>
+                    <input
+                        type="text"
+                        placeholder="Searching for a specific exercise?"
+                        v-model="filter"
+                    />
+                </div>
+            </div>
+            <div class="scroll">
                 <Exercise
-                    v-for="(exercise, index) in allExercises"
-                    @click.native="$event.target.scrollIntoView(index > 4)"
+                    v-for="exercise in filtered"
+                    @click.native="
+                        $event.target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center',
+                        })
+                    "
                     :class="{
                         'selected-exercise':
                             $store.getters.selected === exercise,
@@ -49,19 +64,55 @@ export default {
     data() {
         return {
             allExercises: null,
+            filter: '',
         }
+    },
+    computed: {
+        filtered() {
+            return this.allExercises.filter(e => e.name.includes(this.filter))
+        },
     },
 }
 </script>
 
 <style scoped>
+.head {
+    position: fixed;
+    top: 3.5rem;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    z-index: 2;
+}
 p {
     text-align: center;
+    margin-top: 2.5rem;
 }
 .body {
     padding: 0.5rem;
     max-width: 500px;
-    margin: auto;
+    margin: 8.25rem auto 0;
+}
+.search {
+    border: 1px solid #777;
+    border-radius: 20px;
+    margin: 1rem 1rem 0.2rem;
+    display: flex;
+    align-items: center;
+}
+.search input {
+    padding: 0.75rem 0.5rem 0.5rem;
+    border: none;
+    border-radius: 20px;
+    margin: 0;
+    color: #777;
+}
+.search i {
+    margin-left: 0.75rem;
+    color: #777;
 }
 .selected-exercise {
     background-color: whitesmoke;

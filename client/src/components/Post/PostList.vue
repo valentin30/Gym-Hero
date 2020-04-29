@@ -1,7 +1,7 @@
 <template>
     <div>
         <Spinner v-if="posts.length === 0" />
-        <ul v-else>
+        <ul >
             <PostPreview v-for="post in posts" :key="post.title" :post="post" />
         </ul>
     </div>

@@ -6,7 +6,8 @@
             enter-active-class="animated fadeIn"
             leave-active-class="animated fadeOut"
         > -->
-        <router-view />
+        
+            <router-view />
         <!-- </transition> -->
         <!-- Slot for Pages -->
         <!--  -->
@@ -98,7 +99,7 @@ body {
     background-color: white;
 }
 #app {
-    margin: 4.5rem auto 2rem;
+    margin: 4.5rem auto 0;
     max-width: 700px;
     width: inherit;
     display: flex;
@@ -134,7 +135,7 @@ code {
 }
 * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 input {
     border-radius: 4px;
