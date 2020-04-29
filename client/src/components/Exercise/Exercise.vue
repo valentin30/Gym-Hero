@@ -1,6 +1,8 @@
 <template>
     <div class="component-body">
-        <div class="exercise">
+        <div class="exercise" 
+            @click="$store.commit('setSelected',exercise)"
+        >
             <div>
                 <img :src="exercise.imageUrl" alt="img" />
             </div>
@@ -9,7 +11,7 @@
                 <p>{{ muscles }}</p>
             </div>
         </div>
-        <template v-if="selectedExercise === exercise">
+        <template v-if="$store.getters.selected === exercise">
             <div class="sets">
                 <input
                     v-if="setsType === 'Ramped'"
@@ -62,7 +64,7 @@
                 <button class="success" :disabled="disable" @click="submit">
                     Add
                 </button>
-                <button class="reject" @click="$emit('close', false)">
+                <button class="reject" @click="$store.commit('setSelected',exercise)">
                     Close
                 </button>
             </div>
@@ -75,7 +77,7 @@ import Spinner from '../General/Spinner'
 import Exercise from '../Exercise/Exercise'
 import Header from '../General/Header'
 export default {
-    props: ['exercise', 'selectedExercise'],
+    props: ['exercise'],
 
     components: {
         Spinner,
@@ -99,7 +101,6 @@ export default {
                 })
             }
             this.$router.go(-1)
-            console.log(this.$store.state.workout)
         },
     },
     data() {

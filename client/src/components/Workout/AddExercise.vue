@@ -5,12 +5,9 @@
             <p class="settings-header">Select an exercise</p>
             <Exercise
                 v-for="exercise in allExercises"
-                @click.native="select(exercise)"
-                @close="selectedExercise = $event"
-                :class="{ 'selected-exercise': selectedExercise === exercise }"
+                :class="{ 'selected-exercise': $store.getters.selected === exercise }"
                 :key="exercise.name"
                 :exercise="exercise"
-                :selectedExercise.sync="selectedExercise"
             />
         </template>
     </div>
@@ -46,14 +43,8 @@ export default {
     data() {
         return {
             allExercises: null,
-            selectedExercise: null,
         }
     },
-    methods:{
-        select(exercise){
-            this.selectedExercise = exercise
-        }
-    }
 }
 </script>
 

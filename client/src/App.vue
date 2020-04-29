@@ -134,6 +134,7 @@ code {
 }
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 input {
     border-radius: 4px;

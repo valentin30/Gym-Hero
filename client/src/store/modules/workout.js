@@ -1,9 +1,13 @@
 const state = {
-    exercises:[]
+    exercises:[],
+    selected: null
 }
 const getters = {
     exercises({ exercises }){
         return exercises
+    },
+    selected({ selected }){
+        return selected
     }
 }
 const mutations = {
@@ -13,7 +17,14 @@ const mutations = {
     },
     removeExercise(state, payload){
         state.exercises = state.exercises.filter(e => e.exercise._id !== payload._id)
-    }
+    },
+    setSelected(state, payload){
+        if(state.selected === payload){
+            state.selected = null
+        }else{
+            state.selected = payload
+        }
+    },
 }
 const actions = {
     pushStraightSets({ commit }, payload){
