@@ -17,6 +17,7 @@ import Height from '../components/Settings/Height'
 import Weight from '../components/Settings/Weight'
 import DateOfBirth from '../components/Settings/Date'
 import Gender from '../components/Settings/Gender'
+import CreateExercise from '../components/Exercise/CreateExercise'
 import store from '../store/index'
 
 Vue.use(VueRouter)
@@ -67,6 +68,11 @@ const routes = [
                 path: '',
                 component: ProfileComponent,
                 beforeEnter: isLoggedIn
+            },
+            {
+                path: 'create-exercise',
+                component: CreateExercise,
+                beforeEnter: isLoggedIn,
             },
             {
                 path: 'settings',

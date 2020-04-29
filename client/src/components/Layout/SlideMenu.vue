@@ -13,6 +13,10 @@
             </p>
         </div>
         <ul>
+            <router-link @click.native="$emit('close', false)" tag="li" to="/profile/create-exercise">
+                <i class="material-icons">add</i>
+                <p>Create Exercise</p>
+            </router-link>
             <router-link @click.native="$emit('close', false)" tag="li" to="/posts">
                 <i class="material-icons">home</i>
                 <p>Home</p>
