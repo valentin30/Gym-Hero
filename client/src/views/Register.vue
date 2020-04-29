@@ -124,6 +124,10 @@ a {
     color: rgb(0, 155, 135);
     font-weight: bold;
 }
+input{
+    margin-top:0;
+    margin-bottom: 1rem;
+}
 .wrong {
     border: 1px solid tomato;
     margin-bottom: 0;

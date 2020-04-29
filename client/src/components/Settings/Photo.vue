@@ -53,7 +53,7 @@ export default {
 
 <style>
 .settings-body {
-    max-width: 500px;
+    max-width: 400px;
     text-align: center;
     margin: auto;
 }

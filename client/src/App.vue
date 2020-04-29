@@ -38,8 +38,8 @@
             <Backdrop v-if="isOpen" @close="isOpen = $event" />
         </transition>
         <transition
-            enter-active-class="animated slideInDown"
-            leave-active-class="animated slideOutUp"
+            enter-active-class="animated slideInUp"
+            leave-active-class="animated slideOutDown"
         >
             <Backdrop
                 v-if="renderMessage"
