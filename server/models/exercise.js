@@ -1,11 +1,11 @@
 const { model, Schema } = require('mongoose')
 
-const exerciseSchema = mongoose.Schema({
+const exerciseSchema = Schema({
     name:{
         type: String,
         require:true,
     },
-    usedMuscles:{
+    muscles:{
         type: Array,
         require:true,
     },

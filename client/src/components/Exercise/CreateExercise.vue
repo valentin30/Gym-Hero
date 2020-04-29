@@ -49,7 +49,7 @@ export default {
                     'Content-Type': 'application/json',
                     Authorization: this.$store.getters.token,
                 },
-                body: JSON.stringify({ name, muscles }),
+                body: JSON.stringify({ name: this.name, muscles:this.muscles }),
             })
                 .then(response => response.json())
                 .then(json => {
@@ -59,6 +59,7 @@ export default {
                             message: json.message + '.',
                         })
                     }
+                    console.log(json)
                     this.$store.dispatch('displayMessage', {
                             header: 'Hey!',
                             message: 'Your exercise was successfully added.',
