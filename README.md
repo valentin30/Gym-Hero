@@ -29,7 +29,7 @@ Or download [Node Version Manager](https://github.com/nvm-sh/nvm) and let it man
 
 Simply clone the repository with:
 ```
-  $ git clone https://github.com/valentin30/Fitness-App.git
+  $ git clone https://github.com/valentin30/Gym-Hero.git
 ```
 
 ## Running the project
