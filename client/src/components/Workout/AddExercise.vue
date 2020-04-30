@@ -105,7 +105,7 @@ p {
     align-items: center;
 }
 .search input {
-    padding: 0.75rem 0.5rem 0.5rem;
+    padding: 0.7rem 0.5rem 0.55rem;
     border: none;
     border-radius: 20px;
     margin: 0;

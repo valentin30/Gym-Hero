@@ -1,45 +1,60 @@
 const state = {
-    exercises:[],
-    selected: null
+    exercises: [],
+    selected: null,
 }
 const getters = {
-    exercises({ exercises }){
+    exercises({ exercises }) {
         return exercises
     },
-    selected({ selected }){
+    selected({ selected }) {
         return selected
-    }
+    },
 }
 const mutations = {
-    pushExercise(state, payload){
+    setExercises(state, payload){
+        state.exercises = payload
+    },
+    pushExercise(state, payload) {
         state.exercises.push(payload)
-        
     },
     removeExercise(state, payload){
-        state.exercises = state.exercises.filter(e => e.exercise._id !== payload._id)
+        state.exercises = state.exercises.filter( e => e !== payload)
     },
-    setSelected(state, payload){
-        if(state.selected === payload){
+    setSelected(state, payload) {
+        if (state.selected === payload) {
             state.selected = null
-        }else{
+        } else {
             state.selected = payload
         }
     },
 }
 const actions = {
-    pushStraightSets({ commit }, payload){
-        commit('pushExercise',payload)
+    pushStraightSets({ commit }, payload) {
+        commit('pushExercise', payload)
     },
-    pushRampedSets({ commit }, { exercise, reps, weight }){
+    pushRampedSets({ commit }, { exercise, reps, weight }) {
         for (let index = 0; index < reps.length; index++) {
-            if(!reps[index] || !weight[index]){ continue }
-            commit('pushExercise',{
-                exercise,
+            if (!reps[index] || !weight[index]) {
+                continue
+            }
+            commit('pushExercise', {
+                name:exercise.name,
                 sets: 1,
                 reps: reps[index],
-                weight: weight[index]
-            })            
+                weight: weight[index],
+            })
         }
+    },
+    getWorkout({ commit }, token){
+        fetch('http://localhost:3000/workout/today',{
+            headers:{
+                Authorization: token
+            }
+        })
+            .then(res => res.json())
+            .then(json => {
+                commit('setExercises',json.exercises)
+            })
     }
 }
 

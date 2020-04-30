@@ -1,6 +1,6 @@
 const { model, Schema } = require('mongoose')
 
-const workoutSchema = mongoose.Schema({
+const workoutSchema = Schema({
     date: {
         type: Date,
         default: new Date().toJSON().slice(0, 10).replace(),
@@ -12,9 +12,8 @@ const workoutSchema = mongoose.Schema({
     },
     exercises: [
         {
-            exercise: {
-                type: Schema.Types.ObjectId,
-                ref: 'Exercise',
+            name: {
+                type: String,
                 required: true,
             },
             sets:{
@@ -22,6 +21,10 @@ const workoutSchema = mongoose.Schema({
                 required: true,
             },
             reps: {
+                type: Number,
+                required: true,
+            },
+            weight:{
                 type: Number,
                 required: true,
             }

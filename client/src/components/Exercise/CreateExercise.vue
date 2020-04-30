@@ -1,6 +1,6 @@
 <template>
     <div class="settings-body some">
-        <p class="settings-header">Choose a name for your exercise?</p>
+        <p class="settings-header">Choose a name for your exercise.</p>
         <input type="text" placeholder="Name" class="settings-input" v-model="name" />
         <p class="settings-header">Which muscles does this exercise involve?</p>
         <section class="section">
@@ -30,6 +30,7 @@ export default {
                 'Shoulders',
                 'Biceps',
                 'Triceps',
+                'Core',
             ],
             muscles:[]
         }

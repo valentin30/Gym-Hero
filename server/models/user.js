@@ -33,13 +33,6 @@ const userSchema = Schema({
         type: String,
         default: new Date().toJSON().slice(0, 10).replace(),
     },
-    workouts: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Workout',
-            required: true,
-        },
-    ],
 })
 
 module.exports = model('User', userSchema)

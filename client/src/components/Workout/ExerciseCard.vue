@@ -1,10 +1,12 @@
 <template>
-    <div class="component-body">
-        <div class="header">
-            <slot name="header"></slot>
-        </div>
-        <div class="info">
-            <slot name="info"></slot>
+    <div>
+        <div class="component-body">
+            <div class="header">
+                <slot name="header"></slot>
+            </div>
+            <div class="info">
+                <slot name="info"></slot>
+            </div>
         </div>
     </div>
 </template>
@@ -31,9 +33,8 @@
     justify-content: space-around;
     align-items: center;
 }
-.info p{
-    min-width: 40px;
-    text-align: center;
+.info p {
+    min-width: 35px;
 }
 p {
     margin: 0;
