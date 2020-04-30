@@ -1,18 +1,17 @@
 <template>
     <div class="component-body">
         <div class="header">
-            <p>Exercise</p>
+            <slot name="header"></slot>
         </div>
         <div class="info">
-            <p>Sets</p>
-            <p>Reps</p>
-            <p>Weight</p>
+            <slot name="info"></slot>
         </div>
     </div>
 </template>
 
 <style scoped>
 .component-body {
+    border-top: 1px solid #555;
     display: flex;
     align-items: center;
     padding: 0.5rem;
@@ -30,6 +29,10 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+.info p{
+    min-width: 30px;
+    text-align: center;
 }
 p {
     margin: 0;
