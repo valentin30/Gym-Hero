@@ -16,6 +16,7 @@
     align-items: center;
     padding: 0.5rem;
     padding-left: 1rem;
+    cursor: pointer;
 }
 .header {
     flex-grow: 1;
@@ -31,7 +32,7 @@
     align-items: center;
 }
 .info p{
-    min-width: 30px;
+    min-width: 40px;
     text-align: center;
 }
 p {

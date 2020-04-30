@@ -95,7 +95,7 @@ p {
 .body {
     padding: 0.5rem;
     max-width: 500px;
-    margin: 8.25rem auto 0;
+    margin: 8.25rem auto 1rem;
 }
 .search {
     border: 1px solid #777;

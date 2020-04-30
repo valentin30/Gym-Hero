@@ -83,7 +83,6 @@ h1 {
 }
 button {
     border-radius: 4px;
-    margin-top: 0.5rem;
     border: none;
     padding: 0.75rem;
     font-size: 1.1rem;

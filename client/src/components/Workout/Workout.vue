@@ -41,11 +41,5 @@ export default {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
 }
-/* .route {
-    display: flex;
-    padding-left: 0.9rem;
-    border-top: 1px solid #555;
-    border-bottom-left-radius: inherit;
-    border-bottom-right-radius: inherit;
-} */
+
 </style>
