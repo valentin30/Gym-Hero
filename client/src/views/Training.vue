@@ -37,9 +37,8 @@ export default {
                         })
                     }, 1000)
                 } else {
-                    this.workouts = [...json.workouts, ...json.workouts]
+                    this.workouts = json.workouts
                 }
-                console.log(json)
             })
     },
 }

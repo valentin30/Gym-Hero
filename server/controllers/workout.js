@@ -23,7 +23,6 @@ exports.getWorkout = (req, res, next) => {
 }
 exports.pushExercises = (req, res, next) => {
     const {exercises} = req.body
-    console.log(new Date().toJSON().slice(0, 10).replace())
     if(!exercises){
         throwError(422, 'Validation Failed')
     }   
