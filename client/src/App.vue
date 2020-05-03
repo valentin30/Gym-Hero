@@ -6,7 +6,8 @@
             enter-active-class="animated fadeIn"
             leave-active-class="animated fadeOut"
         > -->
-        <router-view />
+        
+            <router-view />
         <!-- </transition> -->
         <!-- Slot for Pages -->
         <!--  -->
@@ -38,8 +39,8 @@
             <Backdrop v-if="isOpen" @close="isOpen = $event" />
         </transition>
         <transition
-            enter-active-class="animated slideInDown"
-            leave-active-class="animated slideOutUp"
+            enter-active-class="animated slideInUp"
+            leave-active-class="animated slideOutDown"
         >
             <Backdrop
                 v-if="renderMessage"
@@ -98,7 +99,7 @@ body {
     background-color: white;
 }
 #app {
-    margin: 4.5rem auto 2rem;
+    margin: 4.5rem auto 0;
     max-width: 700px;
     width: inherit;
     display: flex;
@@ -134,6 +135,7 @@ code {
 }
 * {
     box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 input {
     border-radius: 4px;
@@ -147,4 +149,30 @@ input {
 *:focus {
     outline: none;
 }
+.settings-body {
+    max-width: 400px;
+    text-align: center;
+    margin: auto;
+}
+.settings-header {
+    font-size: 1.6rem;
+    color: #555;
+}
+.settings-text {
+    color: #555;
+}
+.settings-input {
+    width: 100%;
+}
+.settings-button {
+    width: 100%;
+    background-color: rgb(0, 155, 135);
+    color: white;
+    border: none;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    font-size: 1.1rem;
+}
+
 </style>

@@ -48,6 +48,7 @@ const actions = {
             return localStorage.clear()
         }
         dispatch('getUser',token)
+        dispatch('getWorkout',token)
         commit('setToken', token)
 
     },

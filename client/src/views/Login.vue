@@ -47,7 +47,7 @@ export default {
                         this.password = ''
                         return this.$store.dispatch('displayMessage', {
                             header: 'Oops!',
-                            message: data.message + '.'
+                            message: data.message + '.',
                         })
                     }
                     console.log(data)
@@ -57,6 +57,7 @@ export default {
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('expiresIn', expirationDate)
                     this.$store.dispatch('autoLogout')
+                    this.$store.dispatch('getWorkout',data.token)
                     this.$store.commit('setToken', data.token)
                     this.$store.commit('setUser', data.user)
                     this.$router.push('/posts')
@@ -83,7 +84,6 @@ h1 {
 }
 button {
     border-radius: 4px;
-    margin-top: 0.5rem;
     border: none;
     padding: 0.75rem;
     font-size: 1.1rem;
@@ -94,5 +94,9 @@ button {
 a {
     color: rgb(0, 155, 135);
     font-weight: bold;
+}
+input {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
 </style>

@@ -24,7 +24,7 @@
     height: 90px;
     left: 0;
     margin: auto;
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     width: 150px;
@@ -139,7 +139,7 @@
     top: 42px;
 }
 .cssload-cssload-loader-line-wrap-wrap:nth-child(5) .cssload-loader-line-wrap {
-    border-color: rgb(71, 71, 234);
+    border-color: rgb(91, 91, 236);
     height: 51px;
     width: 51px;
     top: 53px;

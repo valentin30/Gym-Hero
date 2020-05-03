@@ -1,6 +1,14 @@
 const Exercise = require('../models/exercise')
 const { checkError, throwError } = require('../helpers/func')
 
+exports.getExercises = (req, res, next) => {
+    Exercise.find()
+        .then(exercises => {
+            res.status(200).json({ exercises })
+        })
+        .catch(error => next(checkError(error)))
+}
+
 exports.createExercise = (req, res, next) => {
     const { muscles, name } = req.body
     if (!name || muscles.length === 0) {

@@ -34,14 +34,9 @@ ul {
 }
 li {
     flex-grow: 1;
-    display: block;
     color: #555;
     text-align: center;
-    padding: 0;
-}
-.material-icons {
-    font-size: 2rem;
-    padding: 0;
+    padding: 10px 0 2px;
 }
 .router-link-active {
     background-color: rgb(0, 155, 135);
@@ -53,12 +48,7 @@ li:hover {
 }
 .material-icons {
     font-size: 2rem;
-    padding: 0;
-}
-li {
-    padding: 10px 0 2px;
-    display: block;
-    margin: 0;
+    align-self: center;
 }
 @media(min-width: 700px){
     nav{

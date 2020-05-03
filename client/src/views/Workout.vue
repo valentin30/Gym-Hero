@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Workout</h1>
+        <router-view/>
     </div>
 </template>
 
@@ -14,3 +14,9 @@ export default {
     
 }
 </script>
+
+<style scoped>
+    div{
+        width: 100%;
+    }
+</style>

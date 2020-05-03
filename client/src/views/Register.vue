@@ -124,13 +124,17 @@ a {
     color: rgb(0, 155, 135);
     font-weight: bold;
 }
+input{
+    margin-top:0;
+    margin-bottom: 1rem;
+}
 .wrong {
     border: 1px solid tomato;
-    margin-bottom: 0;
 }
 .error {
     color: tomato;
-    margin: 5px 0;
+    margin: 5px;
+    margin-top: -10px;
     padding-left: 5%;
     text-align: start;
     font-size: 1rem;
