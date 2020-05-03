@@ -42,56 +42,57 @@ export default {
         }
     },
     methods: {
-        signup() {
-            fetch('http://localhost:3000/auth/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: this.name,
-                    email: this.email,
-                    password: this.password,
-                }),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        if ((data.status = 422)) {
-                            this.email = null
+        signup(){
+         //asyncValidation(any){
+                 fetch('http://localhost:3000/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        name: this.name,
+                        email: this.email,
+                        password: this.password,
+                    }),
+                }).then(response => response.json())
+                    .then(data => {
+                        if (data.message) {
+                            if ((data.status = 422)) {
+                                this.email = null
+                            }
+                            return this.$store.dispatch('displayMessage', {
+                                header: 'Oops!',
+                                message: data.message + '.'
+                            })
                         }
-                        return this.$store.dispatch('displayMessage', {
-                            header: 'Oops!',
-                            message: data.message + '.'
-                        })
-                    }
-                    console.log(data)
-                    const now = new Date()
-                    const oneHour = 60 * 60 * 1000
-                    const expirationDate = new Date(now.getTime() + oneHour)
-                    localStorage.setItem('token', data.token)
-                    localStorage.setItem('expiresIn', expirationDate)
-                    this.$store.dispatch('autoLogout')
-                    this.$store.commit('setToken', data.token)
-                    this.$store.commit('setUser', data.user)
-                    this.$router.push('/profile/settings?new=true')
-                })
+                        console.log(data)
+                        const now = new Date()
+                        const oneHour = 60 * 60 * 1000
+                        const expirationDate = new Date(now.getTime() + oneHour)
+                        localStorage.setItem('token', data.token)
+                        localStorage.setItem('expiresIn', expirationDate)
+                        this.$store.dispatch('autoLogout')
+                        this.$store.commit('setToken', data.token)
+                        this.$store.commit('setUser', data.user)
+                        this.$router.push('/profile/settings?new=true')
+                    })
+           }
+      //  } , 
+   },
+          computed: {
+            clickable() {
+                let d =
+                    !this.name ||
+                    !this.email ||
+                    this.password.length < 5 ||
+                    this.confirmPassword !== this.password
+                return !d
+            },
+            match() {
+                let m = this.password.includes(this.confirmPassword)
+                return m
+            },
         },
-    },
-    computed: {
-        clickable() {
-            let d =
-                !this.name ||
-                !this.email ||
-                this.password.length < 5 ||
-                this.confirmPassword !== this.password
-            return !d
-        },
-        match() {
-            let m = this.password.includes(this.confirmPassword)
-            return m
-        },
-    },
 }
 </script>
 
