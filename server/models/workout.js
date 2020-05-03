@@ -12,8 +12,8 @@ const workoutSchema = Schema({
     },
     exercises: [
         {
-            name: {
-                type: String,
+            exercise: {
+                type: Object,
                 required: true,
             },
             sets:{

@@ -11,14 +11,14 @@ const getters = {
     },
 }
 const mutations = {
-    setExercises(state, payload){
+    setExercises(state, payload) {
         state.exercises = payload
     },
     pushExercise(state, payload) {
         state.exercises.push(payload)
     },
-    removeExercise(state, payload){
-        state.exercises = state.exercises.filter( e => e !== payload)
+    removeExercise(state, payload) {
+        state.exercises = state.exercises.filter(e => e !== payload)
     },
     setSelected(state, payload) {
         if (state.selected === payload) {
@@ -38,24 +38,28 @@ const actions = {
                 continue
             }
             commit('pushExercise', {
-                name:exercise.name,
+                exercise,
                 sets: 1,
                 reps: reps[index],
                 weight: weight[index],
             })
         }
     },
-    getWorkout({ commit }, token){
-        fetch('http://localhost:3000/workout/today',{
-            headers:{
-                Authorization: token
-            }
+    modifyExercise({ commit }, exercise) {
+        commit('removeExercise', exercise)
+    },
+    getWorkout({ commit }, token) {
+        fetch('http://localhost:3000/workout/today', {
+            headers: {
+                Authorization: token,
+            },
         })
             .then(res => res.json())
             .then(json => {
-                commit('setExercises',json.exercises)
+                console.log(json)
+                commit('setExercises', json.exercises)
             })
-    }
+    },
 }
 
 export default { state, getters, mutations, actions }

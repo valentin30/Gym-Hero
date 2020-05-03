@@ -57,7 +57,7 @@ export default {
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('expiresIn', expirationDate)
                     this.$store.dispatch('autoLogout')
-                    this.$store.dispatch('getWorkout',this.$store.getters.token)
+                    this.$store.dispatch('getWorkout',data.token)
                     this.$store.commit('setToken', data.token)
                     this.$store.commit('setUser', data.user)
                     this.$router.push('/posts')

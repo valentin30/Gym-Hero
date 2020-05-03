@@ -15,7 +15,7 @@ exports.getWorkout = (req, res, next) => {
         .findOne({ userId: req.userId, date: new Date().toJSON().slice(0, 10).replace()})
         .then(workout => {
             if(!workout){
-                res.status(200).json({exercises:[]})
+                return res.status(200).json({exercises:[]})
             }
             res.status(200).json({ exercises: workout.exercises})
         })
@@ -23,7 +23,7 @@ exports.getWorkout = (req, res, next) => {
 }
 exports.pushExercises = (req, res, next) => {
     const {exercises} = req.body
-    console.log(new Date().toJSON().slice(0, 10).replace()  )
+    console.log(new Date().toJSON().slice(0, 10).replace())
     if(!exercises){
         throwError(422, 'Validation Failed')
     }   
@@ -39,6 +39,7 @@ exports.pushExercises = (req, res, next) => {
             return workout.save()
         })
         .then(workout => {
+            console.log(workout)
             res.status(201).json({ workout })
         })
         .catch(error => next(checkError(error)))

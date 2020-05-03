@@ -6,10 +6,9 @@
             <ExerciseCard
                 v-for="exercise in $store.getters.exercises"
                 :exercise="exercise"
-                @click.native="$store.commit('removeExercise', exercise)"
-                :key="exercise._id"
+                :key="exercise.name"
             >
-                <p slot="header">{{ exercise.name }}</p>
+                <p slot="header">{{ exercise.exercise.name }}</p>
                 <p slot="info">{{ exercise.sets }}</p>
                 <p slot="info">{{ exercise.reps }}</p>
                 <p slot="info">{{ exercise.weight }}kg</p>
@@ -40,21 +39,14 @@ export default {
     },
     methods: {
         save() {
-            let exercises = this.$store.getters.exercises.map(e => {
-                return {
-                    name: e.name,
-                    sets: e.sets,
-                    reps: e.reps,
-                    weight: e.weight,
-                }
-            })
+            console.log(this.$store.getters.exercises)
             fetch('http://localhost:3000/workout', {
                 method: 'POST',
                 headers: {
                     Authorization: this.$store.getters.token,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ exercises }),
+                body: JSON.stringify({ exercises:  this.$store.getters.exercises}),
             })
                 .then(res => res.json())
                 .then(json => {

@@ -57,8 +57,14 @@ export default {
                     })
                     return this.$router.go(-1)
                 }
-                console.log(json)
                 this.allExercises = json.exercises
+                if (this.$route.query.editing) {
+                    this.allExercises.forEach(element => {
+                        if (element._id == this.$route.query.editing) {
+                            this.$store.commit('setSelected', element)
+                        }
+                    })
+                }
             })
     },
     data() {

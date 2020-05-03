@@ -101,7 +101,7 @@ export default {
                 })
             } else {
                 this.$store.dispatch('pushStraightSets', {
-                    name: this.exercise.name,
+                    exercise: this.exercise,
                     sets: this.sets,
                     reps: this.reps[0],
                     weight: this.weight[0],
