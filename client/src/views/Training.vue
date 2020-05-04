@@ -37,7 +37,7 @@ export default {
                         })
                     }, 1000)
                 } else {
-                    this.workouts = json.workouts
+                    this.workouts = json.workouts.reverse()
                 }
             })
     },
@@ -46,7 +46,7 @@ export default {
 
 <style scoped>
     .body-el{
-        margin: auto;
+        margin: auto auto 3rem;
         width: 100%;
         padding: 0.5rem;
     }
