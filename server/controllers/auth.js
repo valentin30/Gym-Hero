@@ -38,7 +38,6 @@ exports.login = async (req, res, next) => {
 
 exports.signup = (req, res, next) => {
     const { name, email, password } = req.body
-    console.log(req.body)
     User.findOne({ email })
         .then(user => {
             if (user) {

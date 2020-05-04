@@ -60,6 +60,10 @@ export default {
 </script>
 
 <style scoped>
+p {
+    margin: 0;
+    margin-top: 0.19rem;
+}
 .body {
     padding: 0.5rem;
     border-radius: 20px;
