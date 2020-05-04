@@ -4,7 +4,7 @@
             src="../../assets/header.jpg"
             alt=""
         />
-        <p>Workout</p>
+        <slot></slot>
     </div>
 </template>
 

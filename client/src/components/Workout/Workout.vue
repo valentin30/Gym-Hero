@@ -1,7 +1,9 @@
 <template>
     <div class="body">
         <div class="workout">
-            <ImageHeader />
+            <ImageHeader>
+                <p>Workout</p>
+            </ImageHeader>
             <ExerciseHeader />
             <ExerciseCard
                 v-for="exercise in $store.getters.exercises"

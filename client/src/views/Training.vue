@@ -1,16 +1,18 @@
 <template>
-    <div>
+    <div class="body-el">
         <Spinner v-if="!workouts" />
+        <WorkoutCard v-else v-for="workout of workouts" :key="workout._id" :workout="workout"/>
 
-        {{ workouts }}
     </div>
 </template>
 
 <script>
+import WorkoutCard from '../components/Workout/WorkoutCard'
 import Spinner from '../components/General/Spinner'
 export default {
     components: {
         Spinner,
+        WorkoutCard
     },
     data() {
         return {
@@ -37,8 +39,15 @@ export default {
                 } else {
                     this.workouts = json.workouts
                 }
-                console.log(json)
             })
     },
 }
 </script>
+
+<style scoped>
+    .body-el{
+        margin: auto;
+        width: 100%;
+        padding: 0.5rem;
+    }
+</style>
