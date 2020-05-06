@@ -22,7 +22,7 @@ const mutations = {
         state.exercises.push(payload)
     },
     removeExercise(state, payload) {
-        state.exercises = state.exercises.filter(e => e !== payload)
+        state.exercises = state.exercises.filter(e => e.exercise.name !== payload.name)
     },
     setSelected(state, payload) {
         if (state.selected === payload) {
@@ -40,23 +40,27 @@ const mutations = {
     },
 }
 const actions = {
-    pushExercise({ commit }, { exercise, sets, reps, weight }) {
+    pushExercise({ commit, state }, { exercise, sets, reps, weight }) {
+        console.log('1')
+        const newExercise = {
+            exercise,
+            work: [],
+        }
+        console.log(state.exercises)
+        const oldExercise = state.exercises.find(e => e.exercise.name === exercise.name)
+        console.log('2', oldExercise)
+        if (oldExercise) {
+            newExercise.work = oldExercise.work
+            console.log('3', newExercise)
+            commit('removeExercise', exercise)
+        }
         if (sets) {
-            commit('pushExercise', {
-                exercise,
-                work: [
-                    {
-                        sets,
-                        reps: reps[0],
-                        weight: weight[0],
-                    },
-                ],
+            newExercise.work.push({
+                sets,
+                reps: reps[0],
+                weight: weight[0],
             })
         } else {
-            const newExercise = {
-                exercise,
-                work: [],
-            }
             reps.forEach((el, index) => {
                 newExercise.work.push({
                     sets: 1,
@@ -64,8 +68,8 @@ const actions = {
                     weight: weight[index],
                 })
             })
-            commit('pushExercise', newExercise)
         }
+        commit('pushExercise', newExercise)
     },
     getWorkout({ commit }, token) {
         fetch('http://localhost:3000/workout/today', {
