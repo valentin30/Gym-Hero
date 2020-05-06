@@ -12,21 +12,25 @@ const workoutSchema = Schema({
     },
     exercises: [
         {
-            exercise: {
-                type: Object,
+            exercise:{
+                type:Object,
                 required: true,
-            },
-            sets:{
-                type: Number,
-                required: true,
-            },
-            reps: {
-                type: Number,
-                required: true,
-            },
-            weight:{
-                type: Number,
-                required: true,
+                work:[
+                    {
+                        sets:{
+                            type:Number,
+                            required: true,
+                        },
+                        reps:{
+                            type:Number,
+                            required: true,
+                        },
+                        weight:{
+                            type:Number,
+                            required: true,
+                        },
+                    },
+                ]
             }
         },
     ],
