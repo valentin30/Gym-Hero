@@ -17,6 +17,7 @@
             <p>Save Workout</p>
             <i class="material-icons">done_all</i>
         </button>
+        {{ $store.getters.exercises }}
     </div>
 </template>
 

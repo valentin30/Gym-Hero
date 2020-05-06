@@ -1,6 +1,7 @@
 const state = {
     exercises: [],
     selected: null,
+    viewed: null,
 }
 const getters = {
     exercises({ exercises }) {
@@ -8,6 +9,9 @@ const getters = {
     },
     selected({ selected }) {
         return selected
+    },
+    viewed({ viewed }) {
+        return viewed
     },
 }
 const mutations = {
@@ -27,26 +31,41 @@ const mutations = {
             state.selected = payload
         }
     },
-}
-const actions = {
-    pushStraightSets({ commit }, payload) {
-        commit('pushExercise', payload)
-    },
-    pushRampedSets({ commit }, { exercise, reps, weight }) {
-        for (let index = 0; index < reps.length; index++) {
-            if (!reps[index] || !weight[index]) {
-                continue
-            }
-            commit('pushExercise', {
-                exercise,
-                sets: 1,
-                reps: reps[index],
-                weight: weight[index],
-            })
+    setViewed(state, payload) {
+        if (state.viewed === payload) {
+            state.viewed = null
+        } else {
+            state.viewed = payload
         }
     },
-    modifyExercise({ commit }, exercise) {
-        commit('removeExercise', exercise)
+}
+const actions = {
+    pushExercise({ commit }, { exercise, sets, reps, weight }) {
+        if (sets) {
+            commit('pushExercise', {
+                exercise,
+                work: [
+                    {
+                        sets,
+                        reps: reps[0],
+                        weight: weight[0],
+                    },
+                ],
+            })
+        } else {
+            const newExercise = {
+                exercise,
+                work: [],
+            }
+            reps.forEach((el, index) => {
+                newExercise.work.push({
+                    sets: 1,
+                    reps: el,
+                    weight: weight[index],
+                })
+            })
+            commit('pushExercise', newExercise)
+        }
     },
     getWorkout({ commit }, token) {
         fetch('http://localhost:3000/workout/today', {

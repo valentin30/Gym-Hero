@@ -1,6 +1,10 @@
 <template>
     <div class="component-body">
-        <ExerciseCard :exercise="exercise" :selected="$store.getters.selected" @click.native="$store.commit('setSelected', exercise)"/>
+        <ExerciseCard
+            :exercise="exercise"
+            :selected="$store.getters.selected"
+            @click.native="$store.commit('setSelected', exercise)"
+        />
         <template v-if="$store.getters.selected === exercise">
             <div class="sets">
                 <input
@@ -72,20 +76,12 @@ export default {
     },
     methods: {
         submit() {
-            if (this.setsType === 'Ramped') {
-                this.$store.dispatch('pushRampedSets', {
-                    exercise: this.exercise,
-                    reps: this.reps,
-                    weight: this.weight,
-                })
-            } else {
-                this.$store.dispatch('pushStraightSets', {
-                    exercise: this.exercise,
-                    sets: this.sets,
-                    reps: this.reps[0],
-                    weight: this.weight[0],
-                })
-            }
+            this.$store.dispatch('pushExercise', {
+                exercise: this.exercise,
+                sets: this.setsType === 'Ramped' ? null : this.setsType,
+                reps: this.reps,
+                weight: this.weight,
+            })
             this.$router.go(-1)
         },
     },
