@@ -45,6 +45,7 @@ export default {
 .content {
     display: flex;
     flex-direction: column;
+    margin-left: 0.25rem;
 }
 img {
     max-width: 50px;

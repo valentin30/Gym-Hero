@@ -12,7 +12,6 @@ div {
     padding: 0.5rem 0.75rem;
     border-top: 1px solid #555;
     cursor: pointer;
-    margin-top: 0.5rem;
 }
 p {
     margin: 0.25rem 0 0;

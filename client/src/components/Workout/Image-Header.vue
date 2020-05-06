@@ -25,7 +25,7 @@ div {
 }
 img {
     width: 100%;
-    margin-bottom: -4.2rem;
+    margin-bottom: -4.19rem;
     border-radius: inherit;
 }
 p {

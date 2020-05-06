@@ -4,15 +4,24 @@
             <ImageHeader>
                 <p>Workout</p>
             </ImageHeader>
-            <ExerciseCard
-                v-for="exercise in $store.getters.exercises"
-                :exercise="exercise"
-                :key="exercise.exercise.name"
-                :class="{
-                    'selected-exercise': $store.getters.viewed === exercise.exercise,
-                }"
-            >
-            </ExerciseCard>
+            <div class="exercises">
+                <ExerciseCard
+                    @click.native="
+                        $event.target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center',
+                        })
+                    "
+                    v-for="exercise in $store.getters.exercises"
+                    :exercise="exercise"
+                    :key="exercise.exercise.name"
+                    :class="{
+                        'selected-exercise':
+                            $store.getters.viewed === exercise.exercise,
+                    }"
+                >
+                </ExerciseCard>
+            </div>
             <AddButton />
         </div>
         <button @click="save">
@@ -56,6 +65,9 @@ export default {
 </script>
 
 <style scoped>
+.exercises {
+    padding: 0.5rem;
+}
 p {
     margin: 0;
     margin-top: 0.19rem;
