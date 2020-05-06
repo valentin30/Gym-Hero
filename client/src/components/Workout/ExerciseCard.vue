@@ -5,7 +5,12 @@
             :selected="$store.getters.viewed"
             @click.native="$store.commit('setViewed', exercise.exercise)"
         />
-        <div v-if="$store.getters.viewed === exercise.exercise">
+        <div v-if="$store.getters.viewed === exercise.exercise" class="content">
+            <div class="exercise header">
+                <p>Sets</p>
+                <p>Reps</p>
+                <p>Weight</p>
+            </div>
             <div
                 v-for="(set, index) in exercise.work"
                 :key="index"
@@ -16,7 +21,18 @@
                 <p>{{ set.weight }}kg</p>
             </div>
             <div class="buttons">
-                <router-link tag="button" @click.native="$store.commit('removeExercise', exercise.exercise)" class="success" :to="{path: '/workout/add-exercise', query:{editing: exercise.exercise._id}}">Modify</router-link>
+                <router-link
+                    tag="button"
+                    @click.native="
+                        $store.commit('removeExercise', exercise.exercise)
+                    "
+                    class="success"
+                    :to="{
+                        path: '/workout/add-exercise',
+                        query: { editing: exercise.exercise._id },
+                    }"
+                    >Modify</router-link
+                >
                 <button
                     class="reject"
                     @click="$store.commit('removeExercise', exercise.exercise)"
@@ -55,13 +71,26 @@ export default {
 .exercise {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
+}
+.content {
+    padding: 0 1rem 0.5rem;
+}
+.exercise p {
+    min-width: 60px;
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 0;
+    color: #555;
+}
+.header p{
+    color: rgb(0,155,135);
 }
 .buttons {
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    padding: 1rem 1rem 0.5rem;
+    padding: 1rem 0 0;
 }
 .buttons button {
     font-size: 1.1rem;

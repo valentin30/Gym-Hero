@@ -4,7 +4,7 @@
             <ImageHeader>
                 <p>Workout</p>
             </ImageHeader>
-            <div class="exercises">
+            <div class="exercises" v-if="$store.getters.exercises.length > 0">
                 <ExerciseCard
                     @click.native="
                         $event.target.scrollIntoView({

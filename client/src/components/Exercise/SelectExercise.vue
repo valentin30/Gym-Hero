@@ -78,7 +78,7 @@ export default {
         submit() {
             this.$store.dispatch('pushExercise', {
                 exercise: this.exercise,
-                sets: this.setsType === 'Ramped' ? null : this.setsType,
+                sets: this.setsType === 'Ramped' ? null : this.sets,
                 reps: this.reps,
                 weight: this.weight,
             })
