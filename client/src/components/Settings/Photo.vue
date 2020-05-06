@@ -9,7 +9,13 @@
             type="file"
             required
         />
-        <button @click="submitChange" class="settings-button" :disabled="!image">Confirm</button>
+        <button
+            @click="submitChange"
+            class="settings-button"
+            :disabled="!image"
+        >
+            Confirm
+        </button>
     </div>
 </template>
 
@@ -31,18 +37,18 @@ export default {
                 },
                 body: formData,
             })
-            .then(response => response.json())
-            .then(json => {
-                if(json.message){
-                    return this.$store.dispatch('displayMessage', {
+                .then(response => response.json())
+                .then(json => {
+                    if (json.message) {
+                        return this.$store.dispatch('displayMessage', {
                             header: 'Oops!',
-                            message: json.message + '.'
+                            message: json.message + '.',
                         })
-                }
-                console.log(json)
-                this.$store.commit('setUser',json.user)
-                this.$router.go(-1)
-            })
+                    }
+                    console.log(json)
+                    this.$store.commit('setUser', json.user)
+                    this.$router.go(-1)
+                })
         },
         processFile($event) {
             this.image = event.target.files[0]
@@ -51,5 +57,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

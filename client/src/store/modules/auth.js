@@ -2,7 +2,7 @@ import router from '@/router'
 
 const state = {
     token: null,
-    user:null
+    user: null,
 }
 const getters = {
     token({ token }) {
@@ -11,29 +11,29 @@ const getters = {
     isAuth({ user }) {
         return user !== null
     },
-    user({ user }){
+    user({ user }) {
         return user
-    }
+    },
 }
 const mutations = {
     setToken(state, payload) {
         state.token = payload
     },
-    setUser(state, payload){
+    setUser(state, payload) {
         state.user = payload
-    }
+    },
 }
 const actions = {
-    getUser({ state, commit }, token){
-        fetch('http://localhost:3000/user',{
-            headers:{
-                'Authorization': token
-            }
+    getUser({ state, commit }, token) {
+        fetch('http://localhost:3000/user', {
+            headers: {
+                Authorization: token,
+            },
         })
             .then(response => response.json())
             .then(json => {
                 console.log(json)
-                commit('setUser',json.user)
+                commit('setUser', json.user)
             })
     },
     tryAutoLogin({ dispatch, commit }) {
@@ -42,20 +42,19 @@ const actions = {
         if (!token) {
             return localStorage.clear()
         }
-        const expirationDate = new Date (localStorage.getItem('expiresIn'))
+        const expirationDate = new Date(localStorage.getItem('expiresIn'))
         const now = new Date()
         if (now >= expirationDate) {
             return localStorage.clear()
         }
-        dispatch('getUser',token)
-        dispatch('getWorkout',token)
+        dispatch('getUser', token)
+        dispatch('getWorkout', token)
         commit('setToken', token)
-
     },
 
     logout({ commit }) {
         commit('setToken', null)
-        commit('setUser',null)
+        commit('setUser', null)
         localStorage.clear()
         router.push('/login')
     },

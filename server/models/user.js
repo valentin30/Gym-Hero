@@ -25,9 +25,9 @@ const userSchema = Schema({
         type: Number,
         default: 0,
     },
-    imageUrl:{
-        type:String,
-        default: 'images/avatar.png'
+    imageUrl: {
+        type: String,
+        default: 'images/avatar.png',
     },
     dateOfBirth: {
         type: String,

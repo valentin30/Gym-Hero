@@ -4,7 +4,7 @@
         <ul>
             <SettingField>
                 <router-link to="/profile/settings/name">
-                    <p class="key">Name:</p>
+                    <p class="key">Name</p>
                     <p class="value">{{ user.name }}</p>
                 </router-link>
             </SettingField>
@@ -61,10 +61,9 @@ export default {
     },
     created() {
         if (this.$route.query.new === 'true') {
-            this.$emit('message', {
-                message: true,
+            this.$store.dispatch('displayMessage', {
                 header: 'Hey!',
-                text: 'Here you can provide you personal information',
+                message: 'Here you can provide you personal information',
             })
         }
     },

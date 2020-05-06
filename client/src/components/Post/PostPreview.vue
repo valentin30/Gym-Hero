@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-    props:['post']
+    props: ['post'],
 }
 </script>
 <style scoped>

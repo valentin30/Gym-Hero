@@ -12,31 +12,31 @@
 export default {
     data() {
         return {
-            name:this.$store.getters.user.name
+            name: this.$store.getters.user.name,
         }
     },
-    methods:{
-        submit(){
-            fetch('http://localhost:3000/user/name',{
+    methods: {
+        submit() {
+            fetch('http://localhost:3000/user/name', {
                 method: 'PUT',
-                headers:{
-                    'Content-Type':'application/json',
-                    Authorization: this.$store.getters.token
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: this.$store.getters.token,
                 },
-                body:JSON.stringify({name: this.name})
+                body: JSON.stringify({ name: this.name }),
             })
                 .then(response => response.json())
                 .then(json => {
-                    if(json.message){
-                        return this.$store.dispatch('displayMessage',{
-                            header:'Oops!',
-                            message: json.message + '.'
+                    if (json.message) {
+                        return this.$store.dispatch('displayMessage', {
+                            header: 'Oops!',
+                            message: json.message + '.',
                         })
                     }
                     this.$store.commit('setUser', json.user)
                     this.$router.go(-1)
                 })
-        }
-    }
+        },
+    },
 }
 </script>

@@ -1,17 +1,7 @@
 <template>
     <div id="app">
-        <!-- Slot for Pages -->
-        <!-- <transition
-            mode="out-in"
-            enter-active-class="animated fadeIn"
-            leave-active-class="animated fadeOut"
-        > -->
-        
-            <router-view />
-        <!-- </transition> -->
-        <!-- Slot for Pages -->
-        <!--  -->
-        <!-- Layout -->
+        <router-view />
+
         <Nav v-if="isAuth && mainRoute"></Nav>
         <TopBar @open="isOpen = $event" />
         <transition
@@ -20,18 +10,14 @@
         >
             <SlideMenu v-if="isOpen" @close="isOpen = $event" />
         </transition>
-        <!-- Layout -->
-        <!--  -->
-        <!-- Message -->
+
         <transition
             enter-active-class="animated fadeInDown"
             leave-active-class="animated fadeOutUpBig"
         >
             <Message v-if="renderMessage" />
         </transition>
-        <!-- Message -->
-        <!--  -->
-        <!-- Backdrops -->
+
         <transition
             enter-active-class="animated slideInRight"
             leave-active-class="animated slideOutRight"
@@ -47,7 +33,6 @@
                 @close="$store.dispatch('closeMessage')"
             />
         </transition>
-        <!-- Backdrops -->
     </div>
 </template>
 
@@ -73,7 +58,6 @@ export default {
     },
     computed: {
         ...mapGetters(['isAuth', 'renderMessage', 'message', 'header']),
-
         mainRoute() {
             let a = this.$route.path.split('/')
             if (a.length > 2) {
@@ -174,5 +158,4 @@ input {
     border-radius: 4px;
     font-size: 1.1rem;
 }
-
 </style>

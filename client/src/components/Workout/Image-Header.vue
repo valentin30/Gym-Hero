@@ -1,9 +1,6 @@
 <template>
-    <div class="img-header" @>
-        <img
-            src="../../assets/header.jpg"
-            alt=""
-        />
+    <div class="img-header">
+        <img src="../../assets/header.jpg" alt="" />
         <slot></slot>
     </div>
 </template>
@@ -25,7 +22,7 @@ div {
 }
 img {
     width: 100%;
-    margin-bottom: -4rem;
+    margin-bottom: -4.19rem;
     border-radius: inherit;
 }
 p {
@@ -37,5 +34,4 @@ p {
     margin: 0;
     padding: 0 1.5rem 0.5rem;
 }
-
 </style>

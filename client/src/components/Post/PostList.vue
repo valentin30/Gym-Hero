@@ -1,7 +1,7 @@
 <template>
     <div>
         <Spinner v-if="posts.length === 0" />
-        <ul >
+        <ul>
             <PostPreview v-for="post in posts" :key="post.title" :post="post" />
         </ul>
     </div>
@@ -21,10 +21,10 @@ export default {
         }
     },
     created() {
-        fetch('http://localhost:3000/posts',{
-            headers:{
-                'Authorization': this.$store.state.auth.token
-            }
+        fetch('http://localhost:3000/posts', {
+            headers: {
+                Authorization: this.$store.state.auth.token,
+            },
         })
             .then(response => response.json())
             .then(json => {

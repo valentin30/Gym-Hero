@@ -74,4 +74,3 @@ exports.signup = (req, res, next) => {
             next(checkError(error))
         })
 }
-

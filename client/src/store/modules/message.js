@@ -1,39 +1,39 @@
 const state = {
-    renderMessage:false,
+    renderMessage: false,
     header: 'Oops!',
     message: 'Something went wrong.',
 }
 const getters = {
-    renderMessage({ renderMessage }){
+    renderMessage({ renderMessage }) {
         return renderMessage
     },
-    header({ header }){
+    header({ header }) {
         return header
     },
-    message({ message }){
+    message({ message }) {
         return message
-    }
+    },
 }
 const mutations = {
-    setHeader(state, payload){
+    setHeader(state, payload) {
         state.header = payload
     },
-    setMessage(state, payload){
+    setMessage(state, payload) {
         state.message = payload
     },
-    setRenderMessage(state, payload){
+    setRenderMessage(state, payload) {
         state.renderMessage = payload
-    }
+    },
 }
 const actions = {
-    displayMessage({ commit }, { header, message }){
+    displayMessage({ commit }, { header, message }) {
         commit('setRenderMessage', true)
         commit('setHeader', header)
         commit('setMessage', message)
     },
-    closeMessage({ commit }){
+    closeMessage({ commit }) {
         commit('setRenderMessage', false)
-    }
+    },
 }
 
 export default { state, getters, mutations, actions }

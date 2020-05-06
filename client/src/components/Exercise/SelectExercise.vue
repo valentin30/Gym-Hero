@@ -1,22 +1,10 @@
 <template>
     <div class="component-body">
-        <div class="exercise" @click="$store.commit('setSelected', exercise)">
-            <div>
-                <img :src="exercise.imageUrl" alt="img" />
-            </div>
-            <div class="content">
-                <p>{{ exercise.name }}</p>
-                <p>{{ muscles }}</p>
-            </div>
-            <div class="arrow">
-                <i
-                    v-if="$store.getters.selected === exercise"
-                    class="material-icons"
-                    >keyboard_arrow_up</i
-                >
-                <i v-else class="material-icons">keyboard_arrow_down</i>
-            </div>
-        </div>
+        <ExerciseCard
+            :exercise="exercise"
+            :selected="$store.getters.selected"
+            @click.native="$store.commit('setSelected', exercise)"
+        />
         <template v-if="$store.getters.selected === exercise">
             <div class="sets">
                 <input
@@ -80,33 +68,20 @@
 </template>
 
 <script>
-import Spinner from '../General/Spinner'
-import Exercise from '../Exercise/Exercise'
-import Header from '../General/Header'
+import ExerciseCard from './ExerciseCard'
 export default {
     props: ['exercise'],
-
     components: {
-        Spinner,
-        Exercise,
-        Header,
+        ExerciseCard,
     },
     methods: {
         submit() {
-            if (this.setsType === 'Ramped') {
-                this.$store.dispatch('pushRampedSets', {
-                    exercise: this.exercise,
-                    reps: this.reps,
-                    weight: this.weight,
-                })
-            } else {
-                this.$store.dispatch('pushStraightSets', {
-                    exercise: this.exercise,
-                    sets: this.sets,
-                    reps: this.reps[0],
-                    weight: this.weight[0],
-                })
-            }
+            this.$store.dispatch('pushExercise', {
+                exercise: this.exercise,
+                sets: this.setsType === 'Ramped' ? null : this.sets,
+                reps: this.reps,
+                weight: this.weight,
+            })
             this.$router.go(-1)
         },
     },
@@ -126,13 +101,6 @@ export default {
                 return 1
             }
         },
-        muscles() {
-            let string = ''
-            this.exercise.muscles.forEach(element => {
-                string += element + ' '
-            })
-            return string
-        },
         disable() {
             let d =
                 !this.sets || this.reps.includes('') || this.weight.includes('')
@@ -150,32 +118,7 @@ export default {
     border-radius: 10px;
     margin: auto;
 }
-.exercise {
-    display: flex;
-    flex-direction: row;
-    cursor: pointer;
-}
-.content {
-    display: flex;
-    flex-direction: column;
-}
-img {
-    max-width: 50px;
-    border-radius: 50%;
-}
-.content p {
-    text-align: left;
-    font-size: 1.2rem;
-    margin: 0;
-    color: rgb(0, 155, 135);
-}
-.content p:last-of-type {
-    font-size: 1rem;
-    color: #999;
-}
-.arrow {
-    flex-grow: 1;
-}
+
 .sets {
     width: 100%;
     display: flex;
@@ -238,10 +181,5 @@ button {
     display: flex;
     justify-content: flex-end;
     padding: 1rem 1rem 0.5rem;
-}
-i {
-    color: rgb(0, 155, 135);
-    float: right;
-    padding: 0 0.5rem;
 }
 </style>

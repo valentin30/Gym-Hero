@@ -1,7 +1,7 @@
 <template>
     <div class="body">
-        <p>{{header}}</p>
-        <p>{{message}}</p>
+        <p>{{ header }}</p>
+        <p>{{ message }}</p>
         <div class="footer">
             <button @click="closeMessage">Okay</button>
         </div>
@@ -11,11 +11,11 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-    computed:{
-        ...mapGetters(['isAuth','renderMessage','message','header']),
+    computed: {
+        ...mapGetters(['isAuth', 'renderMessage', 'message', 'header']),
     },
     methods: {
-        ...mapActions(['closeMessage'])
+        ...mapActions(['closeMessage']),
     },
 }
 </script>

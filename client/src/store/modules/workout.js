@@ -1,6 +1,7 @@
 const state = {
     exercises: [],
     selected: null,
+    viewed: null,
 }
 const getters = {
     exercises({ exercises }) {
@@ -8,6 +9,9 @@ const getters = {
     },
     selected({ selected }) {
         return selected
+    },
+    viewed({ viewed }) {
+        return viewed
     },
 }
 const mutations = {
@@ -18,7 +22,9 @@ const mutations = {
         state.exercises.push(payload)
     },
     removeExercise(state, payload) {
-        state.exercises = state.exercises.filter(e => e !== payload)
+        state.exercises = state.exercises.filter(
+            e => e.exercise.name !== payload.name,
+        )
     },
     setSelected(state, payload) {
         if (state.selected === payload) {
@@ -27,26 +33,47 @@ const mutations = {
             state.selected = payload
         }
     },
-}
-const actions = {
-    pushStraightSets({ commit }, payload) {
-        commit('pushExercise', payload)
-    },
-    pushRampedSets({ commit }, { exercise, reps, weight }) {
-        for (let index = 0; index < reps.length; index++) {
-            if (!reps[index] || !weight[index]) {
-                continue
-            }
-            commit('pushExercise', {
-                exercise,
-                sets: 1,
-                reps: reps[index],
-                weight: weight[index],
-            })
+    setViewed(state, payload) {
+        if (state.viewed === payload) {
+            state.viewed = null
+        } else {
+            state.viewed = payload
         }
     },
-    modifyExercise({ commit }, exercise) {
-        commit('removeExercise', exercise)
+}
+const actions = {
+    pushExercise({ commit, state }, { exercise, sets, reps, weight }) {
+        console.log('1')
+        const newExercise = {
+            exercise,
+            work: [],
+        }
+        console.log(state.exercises)
+        const oldExercise = state.exercises.find(
+            e => e.exercise.name === exercise.name,
+        )
+        console.log('2', oldExercise)
+        if (oldExercise) {
+            newExercise.work = oldExercise.work
+            console.log('3', newExercise)
+            commit('removeExercise', exercise)
+        }
+        if (sets) {
+            newExercise.work.push({
+                sets,
+                reps: reps[0],
+                weight: weight[0],
+            })
+        } else {
+            reps.forEach((el, index) => {
+                newExercise.work.push({
+                    sets: 1,
+                    reps: el,
+                    weight: weight[index],
+                })
+            })
+        }
+        commit('pushExercise', newExercise)
     },
     getWorkout({ commit }, token) {
         fetch('http://localhost:3000/workout/today', {

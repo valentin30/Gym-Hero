@@ -4,17 +4,24 @@
             <ImageHeader>
                 <p>Workout</p>
             </ImageHeader>
-            <ExerciseHeader />
-            <ExerciseCard
-                v-for="exercise in $store.getters.exercises"
-                :exercise="exercise"
-                :key="exercise.name"
-            >
-                <p slot="header">{{ exercise.exercise.name }}</p>
-                <p slot="info">{{ exercise.sets }}</p>
-                <p slot="info">{{ exercise.reps }}</p>
-                <p slot="info">{{ exercise.weight }}kg</p>
-            </ExerciseCard>
+            <div class="exercises" v-if="$store.getters.exercises.length > 0">
+                <ExerciseCard
+                    @click.native="
+                        $event.target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center',
+                        })
+                    "
+                    v-for="exercise in $store.getters.exercises"
+                    :exercise="exercise"
+                    :key="exercise.exercise.name"
+                    :class="{
+                        'selected-exercise':
+                            $store.getters.viewed === exercise.exercise,
+                    }"
+                >
+                </ExerciseCard>
+            </div>
             <AddButton />
         </div>
         <button @click="save">
@@ -29,12 +36,8 @@
 import AddButton from './AddButton'
 import ExerciseCard from './ExerciseCard'
 import ImageHeader from './Image-Header'
-import Header from '../General/Header'
-import ExerciseHeader from './ExerciseHeader'
 export default {
     components: {
-        Header,
-        ExerciseHeader,
         ImageHeader,
         AddButton,
         ExerciseCard,
@@ -48,11 +51,16 @@ export default {
                     Authorization: this.$store.getters.token,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ exercises:  this.$store.getters.exercises}),
+                body: JSON.stringify({
+                    exercises: this.$store.getters.exercises,
+                }),
             })
                 .then(res => res.json())
                 .then(json => {
-                    console.log(json)
+                    this.$store.dispatch('displayMessage', {
+                        header: 'Hey!',
+                        message: 'Your workout was successfully saved.',
+                    })
                 })
         },
     },
@@ -60,6 +68,9 @@ export default {
 </script>
 
 <style scoped>
+.exercises {
+    padding: 0.5rem;
+}
 p {
     margin: 0;
     margin-top: 0.19rem;
@@ -91,7 +102,11 @@ button {
 button i {
     padding: 0 1rem;
 }
-button p{
+button p {
     margin: 0.2rem 0 0;
+}
+.selected-exercise {
+    background-color: whitesmoke;
+    border-color: rgb(197, 197, 197);
 }
 </style>

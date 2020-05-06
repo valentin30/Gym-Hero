@@ -1,8 +1,12 @@
 <template>
     <div class="body-el">
         <Spinner v-if="!workouts" />
-        <WorkoutCard v-else v-for="workout of workouts" :key="workout._id" :workout="workout"/>
-
+        <WorkoutCard
+            v-else
+            v-for="workout of workouts"
+            :key="workout._id"
+            :workout="workout"
+        />
     </div>
 </template>
 
@@ -12,7 +16,7 @@ import Spinner from '../components/General/Spinner'
 export default {
     components: {
         Spinner,
-        WorkoutCard
+        WorkoutCard,
     },
     data() {
         return {
@@ -45,9 +49,9 @@ export default {
 </script>
 
 <style scoped>
-    .body-el{
-        margin: auto auto 3rem;
-        width: 100%;
-        padding: 0.5rem;
-    }
+.body-el {
+    margin: auto auto 3rem;
+    width: 100%;
+    padding: 0.5rem;
+}
 </style>

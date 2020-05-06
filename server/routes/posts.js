@@ -10,5 +10,4 @@ router.get('/:id', authCheck, postController.getPost)
 
 router.post('/', authCheck, postController.createPost)
 
-
 module.exports = router

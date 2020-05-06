@@ -12,31 +12,31 @@
 export default {
     data() {
         return {
-            height:this.$store.getters.user.height
+            height: this.$store.getters.user.height,
         }
     },
-    methods:{
-        submit(){
-            fetch('http://localhost:3000/user/height',{
+    methods: {
+        submit() {
+            fetch('http://localhost:3000/user/height', {
                 method: 'PUT',
-                headers:{
-                    'Content-Type':'application/json',
-                    Authorization: this.$store.getters.token
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: this.$store.getters.token,
                 },
-                body:JSON.stringify({height: this.height})
+                body: JSON.stringify({ height: this.height }),
             })
                 .then(response => response.json())
                 .then(json => {
-                    if(json.message){
-                        return this.$store.dispatch('displayMessage',{
-                            header:'Oops!',
-                            message: json.message + '.'
+                    if (json.message) {
+                        return this.$store.dispatch('displayMessage', {
+                            header: 'Oops!',
+                            message: json.message + '.',
                         })
                     }
                     this.$store.commit('setUser', json.user)
                     this.$router.go(-1)
                 })
-        }
-    }
+        },
+    },
 }
 </script>

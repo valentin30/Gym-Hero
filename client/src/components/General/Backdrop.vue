@@ -1,12 +1,6 @@
 <template>
-    <div @click="$emit('close',false)"></div>
+    <div @click="$emit('close', false)"></div>
 </template>
-
-<script>
-export default {
-    
-}
-</script>
 
 <style scoped>
 div {
