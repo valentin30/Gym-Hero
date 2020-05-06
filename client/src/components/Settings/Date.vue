@@ -1,6 +1,6 @@
 <template>
     <div class="settings-body">
-        <p class="settings-header">What's your name?</p>
+        <p class="settings-header">When were you born?</p>
         <input type="date" class="settings-input" v-model="dateOfBirth" />
         <button class="settings-button" @click="submit" :disabled="!dateOfBirth">
             Confirm

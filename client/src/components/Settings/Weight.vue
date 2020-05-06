@@ -1,6 +1,6 @@
 <template>
     <div class="settings-body">
-        <p class="settings-header">How much do you weigh?</p>
+        <p class="settings-header">How much do you weight?</p>
         <input type="number" class="settings-input" v-model="weight" />
         <button class="settings-button" @click="submit" :disabled="!weight">
             Confirm
