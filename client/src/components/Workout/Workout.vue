@@ -7,7 +7,10 @@
             <ExerciseCard
                 v-for="exercise in $store.getters.exercises"
                 :exercise="exercise"
-                :key="exercise.name"
+                :key="exercise.exercise.name"
+                :class="{
+                    'selected-exercise': $store.getters.viewed === exercise.exercise,
+                }"
             >
             </ExerciseCard>
             <AddButton />
@@ -17,7 +20,6 @@
             <p>Save Workout</p>
             <i class="material-icons">done_all</i>
         </button>
-        {{ $store.getters.exercises }}
     </div>
 </template>
 
@@ -40,7 +42,9 @@ export default {
                     Authorization: this.$store.getters.token,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ exercises:  this.$store.getters.exercises}),
+                body: JSON.stringify({
+                    exercises: this.$store.getters.exercises,
+                }),
             })
                 .then(res => res.json())
                 .then(json => {
@@ -83,7 +87,11 @@ button {
 button i {
     padding: 0 1rem;
 }
-button p{
+button p {
     margin: 0.2rem 0 0;
+}
+.selected-exercise {
+    background-color: whitesmoke;
+    border-color: rgb(197, 197, 197);
 }
 </style>
