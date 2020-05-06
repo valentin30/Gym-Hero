@@ -83,8 +83,8 @@ export default {
     margin: 0;
     color: #555;
 }
-.header p{
-    color: rgb(0,155,135);
+.header p {
+    color: rgb(0, 155, 135);
 }
 .buttons {
     width: 100%;

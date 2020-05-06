@@ -4,36 +4,57 @@
             <button class="close" @click="$emit('close', false)">
                 <i class="material-icons">clear</i>
             </button>
-            <img
-                :src="'http://localhost:3000/' + user.imageUrl"
-                alt="avatar"
-            />
+            <img :src="'http://localhost:3000/' + user.imageUrl" alt="avatar" />
             <p>
                 <b>{{ user.name }}</b>
             </p>
         </div>
         <ul>
-            <router-link @click.native="$emit('close', false)" tag="li" to="/profile/create-exercise">
+            <router-link
+                @click.native="$emit('close', false)"
+                tag="li"
+                to="/profile/create-exercise"
+            >
                 <i class="material-icons">add</i>
                 <p>Create Exercise</p>
             </router-link>
-            <router-link @click.native="$emit('close', false)" tag="li" to="/posts">
+            <router-link
+                @click.native="$emit('close', false)"
+                tag="li"
+                to="/posts"
+            >
                 <i class="material-icons">home</i>
                 <p>Home</p>
             </router-link>
-            <router-link @click.native="$emit('close', false)" tag="li" to="/workout">
+            <router-link
+                @click.native="$emit('close', false)"
+                tag="li"
+                to="/workout"
+            >
                 <i class="material-icons">fitness_center</i>
                 <p>Workout</p>
             </router-link>
-            <router-link @click.native="$emit('close', false)" tag="li" to="/training">
+            <router-link
+                @click.native="$emit('close', false)"
+                tag="li"
+                to="/training"
+            >
                 <i class="material-icons">today</i>
                 <p>Workout Log</p>
             </router-link>
-            <router-link @click.native="$emit('close', false)" tag="li" to="/profile">
+            <router-link
+                @click.native="$emit('close', false)"
+                tag="li"
+                to="/profile"
+            >
                 <i class="material-icons">person</i>
                 <p>Profile</p>
             </router-link>
-            <router-link @click.native="$emit('close', false)" tag="li" to="/profile/settings">
+            <router-link
+                @click.native="$emit('close', false)"
+                tag="li"
+                to="/profile/settings"
+            >
                 <i class="material-icons">settings</i>
                 <p>Settings</p>
             </router-link>
@@ -49,11 +70,9 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
     data() {
-        return {
-            
-        }
+        return {}
     },
-    computed:{
+    computed: {
         ...mapGetters(['user']),
     },
     methods: {
@@ -125,8 +144,8 @@ li i {
     font-size: 1.6rem;
     padding-right: 0.5rem;
 }
-@media(min-width: 800px){
-    .body{
+@media (min-width: 800px) {
+    .body {
         width: 25%;
     }
 }

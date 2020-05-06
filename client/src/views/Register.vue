@@ -62,7 +62,7 @@ export default {
                         }
                         return this.$store.dispatch('displayMessage', {
                             header: 'Oops!',
-                            message: data.message + '.'
+                            message: data.message + '.',
                         })
                     }
                     const now = new Date()
@@ -123,8 +123,8 @@ a {
     color: rgb(0, 155, 135);
     font-weight: bold;
 }
-input{
-    margin-top:0;
+input {
+    margin-top: 0;
     margin-bottom: 1rem;
 }
 .wrong {

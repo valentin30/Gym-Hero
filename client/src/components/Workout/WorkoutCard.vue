@@ -3,7 +3,6 @@
         <ImageHeader>
             <p>{{ workout.date.slice(0, 10) }}</p>
         </ImageHeader>
-        <ExerciseHeader />
         <div class="content">
             <div
                 class="exercise"
@@ -26,28 +25,26 @@
 <script>
 import ExerciseCard from './ExerciseCard'
 import ImageHeader from './Image-Header'
-import ExerciseHeader from './ExerciseHeader'
 export default {
     components: {
         ExerciseCard,
         ImageHeader,
-        ExerciseHeader
     },
     props: ['workout'],
 }
 </script>
 
 <style scoped>
-.content *{
+.content * {
     cursor: default;
 }
-.body{
+.body {
     width: 100%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 20px;
     margin-bottom: 1rem;
 }
-.exercise{
+.exercise {
     border-top: 1px solid #555;
     display: flex;
     align-items: center;
@@ -55,20 +52,20 @@ export default {
     padding-left: 1rem;
     cursor: pointer;
 }
-.exercise-header{
+.exercise-header {
     flex-grow: 1;
     display: flex;
     justify-content: start;
     align-items: center;
 }
-.exercise-body{
+.exercise-body {
     flex-grow: 1;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 }
-.exercise-body p{
+.exercise-body p {
     min-width: 35px;
     margin: 0;
 }

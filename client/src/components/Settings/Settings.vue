@@ -61,7 +61,7 @@ export default {
     },
     created() {
         if (this.$route.query.new === 'true') {
-            this.$store.dispatch('displayMessage',{
+            this.$store.dispatch('displayMessage', {
                 header: 'Hey!',
                 message: 'Here you can provide you personal information',
             })

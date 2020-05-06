@@ -1,19 +1,18 @@
 const { model, Schema } = require('mongoose')
 
 const exerciseSchema = Schema({
-    name:{
+    name: {
         type: String,
-        require:true,
+        require: true,
     },
-    muscles:{
+    muscles: {
         type: Array,
-        require:true,
+        require: true,
     },
     imageUrl: {
         type: String,
-        default: 'http://localhost:3000/images/exercise.jpg'
-    }
-    
+        default: 'http://localhost:3000/images/exercise.jpg',
+    },
 })
 
-module.exports = model('Exercise',exerciseSchema)
+module.exports = model('Exercise', exerciseSchema)

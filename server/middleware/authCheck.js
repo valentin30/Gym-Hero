@@ -3,17 +3,17 @@ const { throwError } = require('../helpers/func')
 
 module.exports = (req, res, next) => {
     const token = req.get('Authorization')
-    if(!token){
+    if (!token) {
         throwError(401, 'not authenticated')
     }
-            let decodedToken
-    try{
+    let decodedToken
+    try {
         decodedToken = jwt.verify(token, 'secret')
-    }catch(err){
+    } catch (err) {
         err.statusCode = 403
         throw err
     }
-    if(!decodedToken){
+    if (!decodedToken) {
         throwError(401, 'not authenticated')
     }
     req.userId = decodedToken.userId

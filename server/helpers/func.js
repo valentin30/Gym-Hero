@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs')
 
 exports.checkError = error => {
-    if(!error.statusCode){
+    if (!error.statusCode) {
         error.statusCode = 500
     }
     return error

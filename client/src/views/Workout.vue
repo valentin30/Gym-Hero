@@ -1,22 +1,19 @@
 <template>
     <div>
-        <router-view/>
+        <router-view />
     </div>
 </template>
 
 <script>
 export default {
     data() {
-        return {
-            
-        }
+        return {}
     },
-    
 }
 </script>
 
 <style scoped>
-    div{
-        width: 100%;
-    }
+div {
+    width: 100%;
+}
 </style>

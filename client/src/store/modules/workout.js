@@ -22,7 +22,9 @@ const mutations = {
         state.exercises.push(payload)
     },
     removeExercise(state, payload) {
-        state.exercises = state.exercises.filter(e => e.exercise.name !== payload.name)
+        state.exercises = state.exercises.filter(
+            e => e.exercise.name !== payload.name,
+        )
     },
     setSelected(state, payload) {
         if (state.selected === payload) {
@@ -47,7 +49,9 @@ const actions = {
             work: [],
         }
         console.log(state.exercises)
-        const oldExercise = state.exercises.find(e => e.exercise.name === exercise.name)
+        const oldExercise = state.exercises.find(
+            e => e.exercise.name === exercise.name,
+        )
         console.log('2', oldExercise)
         if (oldExercise) {
             newExercise.work = oldExercise.work

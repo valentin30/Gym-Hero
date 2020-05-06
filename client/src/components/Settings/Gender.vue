@@ -1,8 +1,20 @@
 <template>
     <div class="settings-body some">
         <p class="settings-header">Select your gender?</p>
-        <p @click="gender = 'Male'" class="settings-header radio" :class="{ 'selected': gender === 'Male' }">Male</p>
-        <p @click="gender = 'Female'" class="settings-header radio" :class="{'selected' : gender === 'Female'}">Female</p>
+        <p
+            @click="gender = 'Male'"
+            class="settings-header radio"
+            :class="{ selected: gender === 'Male' }"
+        >
+            Male
+        </p>
+        <p
+            @click="gender = 'Female'"
+            class="settings-header radio"
+            :class="{ selected: gender === 'Female' }"
+        >
+            Female
+        </p>
         <button class="settings-button" @click="submit" :disabled="!gender">
             Confirm
         </button>
@@ -43,22 +55,21 @@ export default {
 </script>
 
 <style scoped>
-.some{
+.some {
     max-width: 400px;
 }
 .radio {
     text-align: left;
     cursor: pointer;
     padding: 0.5rem;
-    margin:0;
+    margin: 0;
     border-radius: 4px;
     font-size: 1.2rem;
     border: 1px solid white;
-
 }
-.selected{
+.selected {
     background-color: whitesmoke;
-    border-color: rgb(207,207,207);
-    color: rgb(0,155,135);
+    border-color: rgb(207, 207, 207);
+    color: rgb(0, 155, 135);
 }
 </style>

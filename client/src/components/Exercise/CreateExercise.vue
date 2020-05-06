@@ -1,10 +1,21 @@
 <template>
     <div class="settings-body some">
         <p class="settings-header">Choose a name for your exercise.</p>
-        <input type="text" placeholder="Name" class="settings-input" v-model="name" />
+        <input
+            type="text"
+            placeholder="Name"
+            class="settings-input"
+            v-model="name"
+        />
         <p class="settings-header">Which muscles does this exercise involve?</p>
         <section class="section">
-            <p @click="toggle(muscle)" class="settings-header radio" :class="{'selected': muscles.includes(muscle)}" v-for="muscle in allMuscles" :key="muscle">
+            <p
+                @click="toggle(muscle)"
+                class="settings-header radio"
+                :class="{ selected: muscles.includes(muscle) }"
+                v-for="muscle in allMuscles"
+                :key="muscle"
+            >
                 {{ muscle }}
             </p>
         </section>
@@ -32,14 +43,14 @@ export default {
                 'Triceps',
                 'Core',
             ],
-            muscles:[]
+            muscles: [],
         }
     },
     methods: {
-        toggle(muscle){
-            if(this.muscles.includes(muscle)){
+        toggle(muscle) {
+            if (this.muscles.includes(muscle)) {
                 this.muscles = this.muscles.filter(m => m !== muscle)
-            }else{
+            } else {
                 this.muscles.push(muscle)
             }
         },
@@ -50,7 +61,10 @@ export default {
                     'Content-Type': 'application/json',
                     Authorization: this.$store.getters.token,
                 },
-                body: JSON.stringify({ name: this.name, muscles:this.muscles }),
+                body: JSON.stringify({
+                    name: this.name,
+                    muscles: this.muscles,
+                }),
             })
                 .then(response => response.json())
                 .then(json => {
@@ -62,9 +76,9 @@ export default {
                     }
                     console.log(json)
                     this.$store.dispatch('displayMessage', {
-                            header: 'Hey!',
-                            message: 'Your exercise was successfully added.',
-                        })
+                        header: 'Hey!',
+                        message: 'Your exercise was successfully added.',
+                    })
                     this.$router.go(-1)
                 })
         },
@@ -89,7 +103,6 @@ export default {
     font-size: 1.2rem;
     margin-bottom: 0.2rem;
     border: 1px solid white;
-
 }
 .selected {
     background-color: whitesmoke;

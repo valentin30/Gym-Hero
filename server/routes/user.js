@@ -12,5 +12,4 @@ router.put('/height', authCheck, userController.changeHeight)
 router.put('/weight', authCheck, userController.changeWeight)
 router.put('/date', authCheck, userController.changeDateOfBirth)
 
-
 module.exports = router

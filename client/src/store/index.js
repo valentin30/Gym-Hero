@@ -12,6 +12,6 @@ export default new Vuex.Store({
     modules: {
         auth,
         message,
-        workout
+        workout,
     },
 })

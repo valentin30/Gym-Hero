@@ -12,31 +12,31 @@
 export default {
     data() {
         return {
-            weight:this.$store.getters.user.weight
+            weight: this.$store.getters.user.weight,
         }
     },
-    methods:{
-        submit(){
-            fetch('http://localhost:3000/user/weight',{
+    methods: {
+        submit() {
+            fetch('http://localhost:3000/user/weight', {
                 method: 'PUT',
-                headers:{
-                    'Content-Type':'application/json',
-                    Authorization: this.$store.getters.token
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: this.$store.getters.token,
                 },
-                body:JSON.stringify({weight: this.weight})
+                body: JSON.stringify({ weight: this.weight }),
             })
                 .then(response => response.json())
                 .then(json => {
-                    if(json.message){
-                        return this.$store.dispatch('displayMessage',{
-                            header:'Oops!',
-                            message: json.message + '.'
+                    if (json.message) {
+                        return this.$store.dispatch('displayMessage', {
+                            header: 'Oops!',
+                            message: json.message + '.',
                         })
                     }
                     this.$store.commit('setUser', json.user)
                     this.$router.go(-1)
                 })
-        }
-    }
+        },
+    },
 }
 </script>

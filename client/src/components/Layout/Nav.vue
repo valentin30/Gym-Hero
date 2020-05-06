@@ -50,8 +50,8 @@ li:hover {
     font-size: 2rem;
     align-self: center;
 }
-@media(min-width: 700px){
-    nav{
+@media (min-width: 700px) {
+    nav {
         display: none;
     }
 }

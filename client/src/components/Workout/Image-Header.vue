@@ -1,9 +1,6 @@
 <template>
-    <div class="img-header" @>
-        <img
-            src="../../assets/header.jpg"
-            alt=""
-        />
+    <div class="img-header">
+        <img src="../../assets/header.jpg" alt="" />
         <slot></slot>
     </div>
 </template>
@@ -37,5 +34,4 @@ p {
     margin: 0;
     padding: 0 1.5rem 0.5rem;
 }
-
 </style>

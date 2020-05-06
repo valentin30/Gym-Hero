@@ -8,9 +8,7 @@
             <p>{{ muscles }}</p>
         </div>
         <div class="arrow">
-            <i
-                v-if="selected === exercise"
-                class="material-icons"
+            <i v-if="selected === exercise" class="material-icons"
                 >keyboard_arrow_up</i
             >
             <i v-else class="material-icons">keyboard_arrow_down</i>
