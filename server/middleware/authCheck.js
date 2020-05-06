@@ -6,11 +6,11 @@ module.exports = (req, res, next) => {
     if(!token){
         throwError(401, 'not authenticated')
     }
-    let decodedToken
+            let decodedToken
     try{
         decodedToken = jwt.verify(token, 'secret')
     }catch(err){
-        err.statusCode = 500
+        err.statusCode = 403
         throw err
     }
     if(!decodedToken){

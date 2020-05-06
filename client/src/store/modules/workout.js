@@ -56,7 +56,6 @@ const actions = {
         })
             .then(res => res.json())
             .then(json => {
-                console.log(json)
                 commit('setExercises', json.exercises)
             })
     },

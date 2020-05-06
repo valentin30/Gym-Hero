@@ -65,7 +65,6 @@ export default {
                             message: data.message + '.'
                         })
                     }
-                    console.log(data)
                     const now = new Date()
                     const oneHour = 60 * 60 * 1000
                     const expirationDate = new Date(now.getTime() + oneHour)
