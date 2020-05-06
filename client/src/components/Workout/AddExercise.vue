@@ -36,7 +36,7 @@
 
 <script>
 import Spinner from '../General/Spinner'
-import Exercise from '../Exercise/Exercise'
+import Exercise from '../Exercise/SelectExercise'
 export default {
     components: {
         Spinner,
