@@ -9,7 +9,7 @@
         </div>
         <div class="arrow">
             <i
-                v-if="$store.getters.selected === exercise"
+                v-if="selected === exercise"
                 class="material-icons"
                 >keyboard_arrow_up</i
             >
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-    props: ['exercise'],
+    props: ['exercise', 'selected'],
     data() {
         return {}
     },

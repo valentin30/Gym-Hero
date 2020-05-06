@@ -1,6 +1,6 @@
 <template>
     <div class="component-body">
-        <ExerciseCard :exercise="exercise" @click.native="$store.commit('setSelected', exercise)"/>
+        <ExerciseCard :exercise="exercise" :selected="$store.getters.selected" @click.native="$store.commit('setSelected', exercise)"/>
         <template v-if="$store.getters.selected === exercise">
             <div class="sets">
                 <input

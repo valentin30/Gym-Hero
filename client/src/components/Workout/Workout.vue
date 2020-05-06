@@ -4,16 +4,11 @@
             <ImageHeader>
                 <p>Workout</p>
             </ImageHeader>
-            <ExerciseHeader />
             <ExerciseCard
                 v-for="exercise in $store.getters.exercises"
                 :exercise="exercise"
                 :key="exercise.name"
             >
-                <p slot="header">{{ exercise.exercise.name }}</p>
-                <p slot="info">{{ exercise.sets }}</p>
-                <p slot="info">{{ exercise.reps }}</p>
-                <p slot="info">{{ exercise.weight }}kg</p>
             </ExerciseCard>
             <AddButton />
         </div>
@@ -29,12 +24,8 @@
 import AddButton from './AddButton'
 import ExerciseCard from './ExerciseCard'
 import ImageHeader from './Image-Header'
-import Header from '../General/Header'
-import ExerciseHeader from './ExerciseHeader'
 export default {
     components: {
-        Header,
-        ExerciseHeader,
         ImageHeader,
         AddButton,
         ExerciseCard,
