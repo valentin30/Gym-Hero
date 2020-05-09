@@ -3,20 +3,20 @@ const { checkError, throwError } = require('../helpers/func')
 const jwt = require('jsonwebtoken')
 const { hash, compare } = require('bcrypt')
 
-exports.login = async (req, res, next) => {
+exports.login = (req, res, next) => {
     const { email, password } = req.body
     let foundedUser
     User.findOne({ email })
         .then(user => {
             if (!user) {
-                throwError(404, "Couldn't find a user with that email!")
+                throwError(401, 'Wrong email or password')
             }
             foundedUser = user
             return compare(password, user.password)
         })
         .then(isEqual => {
             if (!isEqual) {
-                throwError(401, 'Wrong password try again!')
+                throwError(401, 'Wrong email or password')
             }
             const token = jwt.sign(
                 {
