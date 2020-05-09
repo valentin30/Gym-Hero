@@ -20,7 +20,7 @@
                 <p>{{ set.reps }}</p>
                 <p>{{ set.weight }}kg</p>
             </div>
-            <div class="buttons">
+            <div class="buttons" v-if="!readOnly">
                 <router-link
                     tag="button"
                     @click.native="
@@ -50,7 +50,7 @@ export default {
     components: {
         ExerciseCard,
     },
-    props: ['exercise'],
+    props: ['exercise', 'readOnly'],
     data() {
         return {
             display: true,

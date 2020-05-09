@@ -104,6 +104,7 @@ export default {
 }
 .header p {
     font-size: 1.2rem;
+    margin-top: 0.5rem;
     padding-left: 0.2rem;
 }
 img {
