@@ -41,9 +41,6 @@ export default {
                 .then(response => response.json())
                 .then(data => {
                     if (data.message) {
-                        if (data.status === 404) {
-                            this.email = ''
-                        }
                         this.password = ''
                         return this.$store.dispatch('displayMessage', {
                             header: 'Oops!',

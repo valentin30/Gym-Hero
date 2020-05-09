@@ -2,7 +2,7 @@ const Post = require('../models/post')
 const { checkError, throwError } = require('../helpers/func')
 
 exports.getPosts = (req, res, next) => {
-    Post.find()
+    return Post.find()
         .then(posts => {
             if (!posts) {
                 throwError(404, 'Posts Not Found')
