@@ -24,11 +24,6 @@
             </div>
             <AddButton />
         </div>
-        <button @click="save">
-            <i class="material-icons">done_all</i>
-            <p>Save Workout</p>
-            <i class="material-icons">done_all</i>
-        </button>
     </div>
 </template>
 
@@ -42,27 +37,24 @@ export default {
         AddButton,
         ExerciseCard,
     },
-    methods: {
-        save() {
-            console.log(this.$store.getters.exercises)
-            fetch('http://localhost:3000/workout', {
-                method: 'POST',
-                headers: {
-                    Authorization: this.$store.getters.token,
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    exercises: this.$store.getters.exercises,
-                }),
-            })
-                .then(res => res.json())
-                .then(json => {
-                    this.$store.dispatch('displayMessage', {
-                        header: 'Hey!',
-                        message: 'Your workout was successfully saved.',
-                    })
-                })
-        },
+    beforeRouteLeave(to, from, next) {
+        if(to.path !== '/training'){
+            next()
+        }
+        fetch('http://localhost:3000/workout', {
+            method: 'POST',
+            headers: {
+                Authorization: this.$store.getters.token,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                exercises: this.$store.getters.exercises,
+            }),
+        }).then(() => {
+            if(to.path === '/training'){
+                next()
+            }
+        })  
     },
 }
 </script>
