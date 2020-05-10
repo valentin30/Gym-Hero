@@ -40,6 +40,9 @@ export default {
                 .then(response => response.json())
                 .then(json => {
                     if (json.message) {
+                        if (json.status === 403) {
+                            return this.$store.dispatch('logout')
+                        }
                         return this.$store.dispatch('displayMessage', {
                             header: 'Oops!',
                             message: json.message + '.',

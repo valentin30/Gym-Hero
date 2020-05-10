@@ -5,16 +5,6 @@
     </div>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            number: Math.random(),
-        }
-    },
-}
-</script>
-
 <style scoped>
 div {
     border-top-left-radius: 15px;
