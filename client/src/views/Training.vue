@@ -41,7 +41,9 @@ export default {
                         })
                     }, 1000)
                 } else {
-                    this.workouts = json.workouts.reverse()
+                    this.workouts = json.workouts
+                        .filter(w => w.exercises.length !== 0)
+                        .reverse()
                 }
             })
     },
