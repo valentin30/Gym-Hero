@@ -110,7 +110,17 @@ const routes = [
                         path: '',
                         component: SettingsComponent,
                         meta: { title: 'Settings' },
-                        beforeEnter: isLoggedIn,
+                        beforeEnter(to, from, next) {
+                            console.log('from hook')
+                            if (from.path === '/register') {
+                                store.dispatch('displayMessage', {
+                                    header: 'Hey!',
+                                    message:
+                                        'Here you can provide you personal information',
+                                })
+                            }
+                            isLoggedIn(to, from, next)
+                        },
                     },
                     {
                         path: 'photo',

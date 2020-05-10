@@ -73,7 +73,7 @@ export default {
                     this.$store.dispatch('autoLogout')
                     this.$store.commit('setToken', data.token)
                     this.$store.commit('setUser', data.user)
-                    this.$router.push('/profile/settings?new=true')
+                    this.$router.push('/profile/settings')
                 })
         },
     },
