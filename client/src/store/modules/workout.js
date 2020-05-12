@@ -43,19 +43,16 @@ const mutations = {
 }
 const actions = {
     pushExercise({ commit, state }, { exercise, sets, reps, weight }) {
-        console.log('1')
         const newExercise = {
             exercise,
             work: [],
         }
-        console.log(state.exercises)
         const oldExercise = state.exercises.find(
             e => e.exercise.name === exercise.name,
         )
         console.log('2', oldExercise)
         if (oldExercise) {
             newExercise.work = oldExercise.work
-            console.log('3', newExercise)
             commit('removeExercise', exercise)
         }
         if (sets) {
