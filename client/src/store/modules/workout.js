@@ -75,7 +75,7 @@ const actions = {
         }
         commit('pushExercise', newExercise)
     },
-    getWorkout({ commit }, token) {
+    getWorkout({ commit, dispatch }, token) {
         fetch('http://localhost:3000/workout/today', {
             headers: {
                 Authorization: token,
@@ -83,6 +83,15 @@ const actions = {
         })
             .then(res => res.json())
             .then(json => {
+                if (json.message) {
+                    if (json.status === 403) {
+                        return dispatch('logout')
+                    }
+                    return dispatch('displayMessage', {
+                        header: 'Oops!',
+                        message: json.message + '.',
+                    })
+                }
                 commit('setExercises', json.exercises)
             })
     },

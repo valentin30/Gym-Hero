@@ -24,7 +24,7 @@ const mutations = {
     },
 }
 const actions = {
-    getUser({ state, commit }, token) {
+    getUser({ state, commit, dispatch }, token) {
         fetch('http://localhost:3000/user', {
             headers: {
                 Authorization: token,
@@ -32,7 +32,15 @@ const actions = {
         })
             .then(response => response.json())
             .then(json => {
-                console.log(json)
+                if (json.message) {
+                    if (json.status === 403) {
+                        return dispatch('logout')
+                    }
+                    return dispatch('displayMessage', {
+                        header: 'Oops!',
+                        message: json.message + '.',
+                    })
+                }
                 commit('setUser', json.user)
             })
     },

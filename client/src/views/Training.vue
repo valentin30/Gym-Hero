@@ -31,6 +31,15 @@ export default {
         })
             .then(res => res.json())
             .then(json => {
+                if (json.message) {
+                    if (json.status === 403) {
+                        return this.$store.dispatch('logout')
+                    }
+                    return this.$store.dispatch('displayMessage', {
+                        header: 'Oops!',
+                        message: json.message + '.',
+                    })
+                }
                 if (json.workouts.length === 0) {
                     setTimeout(() => {
                         this.workouts = json.workouts

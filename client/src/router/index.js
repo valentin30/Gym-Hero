@@ -40,11 +40,13 @@ const routes = [
     {
         path: '/posts',
         component: Posts,
+        meta: { title: 'Gym Hero' },
         beforeEnter: isLoggedIn,
         children: [
             {
                 path: '',
                 component: PostList,
+                meta: { title: 'Gym Hero' },
                 beforeEnter: isLoggedIn,
             },
             {
@@ -58,16 +60,19 @@ const routes = [
     {
         path: '/workout',
         component: WorkoutPage,
+        meta: { title: 'Workout' },
         beforeEnter: isLoggedIn,
         children: [
             {
                 path: '',
                 component: Workout,
+                meta: { title: 'Workout' },
                 beforeEnter: isLoggedIn,
             },
             {
                 path: 'add-exercise',
                 component: AddExercise,
+                meta: { title: 'Add Exercise' },
                 beforeEnter: isLoggedIn,
             },
         ],
@@ -75,6 +80,7 @@ const routes = [
     {
         path: '/training',
         component: Training,
+        meta: { title: 'Workout Log' },
         beforeEnter: isLoggedIn,
     },
     {
@@ -85,22 +91,36 @@ const routes = [
             {
                 path: '',
                 component: ProfileComponent,
+                meta: { title: 'Profile' },
                 beforeEnter: isLoggedIn,
             },
             {
                 path: 'create-exercise',
                 component: CreateExercise,
+                meta: { title: 'Create Exercise' },
                 beforeEnter: isLoggedIn,
             },
             {
                 path: 'settings',
                 component: Settings,
+                meta: { title: 'Settings' },
                 beforeEnter: isLoggedIn,
                 children: [
                     {
                         path: '',
                         component: SettingsComponent,
-                        beforeEnter: isLoggedIn,
+                        meta: { title: 'Settings' },
+                        beforeEnter(to, from, next) {
+                            console.log('from hook')
+                            if (from.path === '/register') {
+                                store.dispatch('displayMessage', {
+                                    header: 'Hey!',
+                                    message:
+                                        'Here you can provide you personal information',
+                                })
+                            }
+                            isLoggedIn(to, from, next)
+                        },
                     },
                     {
                         path: 'photo',
@@ -139,6 +159,7 @@ const routes = [
     {
         path: '/login',
         component: Login,
+        meta: { title: 'Login' },
         beforeEnter: (to, from, next) => {
             store.dispatch('tryAutoLogin')
             if (!store.state.auth.token) {
@@ -151,6 +172,7 @@ const routes = [
     {
         path: '/register',
         component: Register,
+        meta: { title: 'Register' },
         beforeEnter: (to, from, next) => {
             store.dispatch('tryAutoLogin')
             if (!store.state.auth.token) {
@@ -166,6 +188,10 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes,
+})
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || document.title
+    next()
 })
 
 export default router

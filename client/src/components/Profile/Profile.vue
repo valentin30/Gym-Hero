@@ -1,5 +1,11 @@
 <template>
     <div>
-        <h1>Profile</h1>
+        <img src="../../assets/under-development.jpg" alt="page is under development">
     </div>
 </template>
+
+<style scoped>
+    img{
+        width: 100%;
+    }
+</style>

@@ -10,7 +10,7 @@ exports.getWorkouts = (req, res, next) => {
         .catch(error => next(checkError(error)))
 }
 exports.getWorkout = (req, res, next) => {
-    Workout.findOne({
+    return Workout.findOne({
         userId: req.userId,
         date: new Date().toJSON().slice(0, 10).replace(),
     })

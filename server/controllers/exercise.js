@@ -2,7 +2,7 @@ const Exercise = require('../models/exercise')
 const { checkError, throwError } = require('../helpers/func')
 
 exports.getExercises = (req, res, next) => {
-    Exercise.find()
+    return Exercise.find()
         .then(exercises => {
             res.status(200).json({ exercises })
         })
