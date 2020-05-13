@@ -15,7 +15,6 @@ jobs:
   server:
     runs-on: ubuntu-latest
     steps:
-    - name: testing
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
