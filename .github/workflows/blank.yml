@@ -15,13 +15,13 @@ jobs:
   server:
     runs-on: ubuntu-latest
     steps:
+    - name: testing
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
           node-version: 13.x
     - run: npm install
       working-directory: ./server
-    - name: Run tests
     - run: npm test
       working-directory: ./server
         
