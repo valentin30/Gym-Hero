@@ -1,0 +1,32 @@
+
+name: CI
+
+on:
+  push:
+    branches: 
+      - master
+      - develop
+  pull_request:
+    branches: 
+        - master
+        - develop 
+
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+          node-version: 13.x
+    - name: Install dependencies
+      run: |
+          cd server,
+          npm install,
+          cd ../client,
+          npm install
+    - name: Run tests
+      run: |
+        cd server,
+        npm test
+        
