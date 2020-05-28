@@ -1,7 +1,7 @@
 const User = require('../models/user')
 const { checkError, throwError } = require('../helpers/func')
 const jwt = require('jsonwebtoken')
-const { hash, compare } = require('bcrypt')
+const { hash, compare } = require('bcryptjs')
 
 exports.login = (req, res, next) => {
     const { email, password } = req.body
