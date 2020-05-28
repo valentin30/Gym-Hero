@@ -48,7 +48,6 @@ export default {
                             message: json.message + '.',
                         })
                     }
-                    console.log(json)
                     this.$store.commit('setUser', json.user)
                     this.$router.go(-1)
                 })

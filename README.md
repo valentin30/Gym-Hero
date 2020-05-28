@@ -1,4 +1,4 @@
-# The Gym Hero
+# Gym Hero
 
 Here you can read articles on healty lifestyle and training.
 
@@ -11,6 +11,8 @@ Our app provides a bunch of exercises but if your favorite one is not there you 
 [Vue](https://vuejs.org/)
 
 [Express JS](https://expressjs.com/)
+
+[NODE JS](https://nodejs.org/en/)
 
 [MongoDB](https://www.mongodb.com/)
 
@@ -27,7 +29,7 @@ Or download [Node Version Manager](https://github.com/nvm-sh/nvm) and let it man
 
 Simply clone the repository with:
 ```
-  $ git clone https://github.com/valentin30/Fitness-App.git
+  $ git clone https://github.com/valentin30/Gym-Hero.git
 ```
 
 ## Running the project
@@ -35,17 +37,26 @@ Simply clone the repository with:
 However you get the code, you can install dependencies and run the project in development mode with:
 
 ```bash
-  $ cd my-app
-  $ npm install # or yarn
-  $ npm run dev
+  $ cd client
+  $ npm install
+  $ npm run serve
+  $ cd ..
+  $ cd server
+  $ npm install
+  $ npm run dev 
 ```
+For running the client you can use the Vue Project manager with:
 
-Open up [localhost:3000](http://localhost:3000) and start clicking around.
+```bash
+  $ vue ui
+```
+After that select the project and click serve
 
+The browser should open with the project running
 
 ## IDE
 
-We are using [VSCode](https://code.visualstudio.com/) with extension for [svelte](https://marketplace.visualstudio.com/items?itemName=JamesBirtles.svelte-vscode)
+We are using [VSCode](https://code.visualstudio.com/) with extensions for [Vue](https://code.visualstudio.com/docs/nodejs/vuejs-tutorial)
 
 ## Braching Strategy
 
