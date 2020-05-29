@@ -31,17 +31,17 @@ export default {
     z-index: 7;
     background-color: white;
     border-radius: 8px;
-    padding: 1.5rem;
+    padding: 1rem 1rem 0.8rem 1.2rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 p:first-of-type {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin: 0;
     font-weight: bold;
 }
 p:last-of-type {
     margin: 0;
-    padding: 1.5rem 0;
+    padding: 1.2rem 0;
 }
 button {
     margin: 0;
@@ -49,7 +49,7 @@ button {
     border: none;
     background-color: white;
     color: rgb(0, 155, 135);
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 .footer {

@@ -12,11 +12,11 @@ div {
 }
 img {
     width: 100%;
-    margin-bottom: -4.19rem;
+    margin-bottom: -3.25rem;
     border-radius: inherit;
 }
 p {
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: 100%;
     color: white;
     font-weight: bold;

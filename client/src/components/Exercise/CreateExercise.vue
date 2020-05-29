@@ -55,7 +55,7 @@ export default {
             }
         },
         submit() {
-            fetch('http://192.168.1.103:3000/exercise', {
+            fetch(`${process.env.VUE_APP_API_URL}/exercise`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ export default {
     padding: 0.5rem;
     margin: 0;
     border-radius: 4px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 0.2rem;
     border: 1px solid white;
 }

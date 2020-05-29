@@ -1,7 +1,7 @@
 <template>
     <div class="exercise">
         <div>
-            <img :src="exercise.imageUrl" alt="img" />
+            <img :src="`${url}/${exercise.imageUrl}`" alt="img" />
         </div>
         <div class="content">
             <p>{{ exercise.name }}</p>
@@ -20,7 +20,9 @@
 export default {
     props: ['exercise', 'selected'],
     data() {
-        return {}
+        return {
+            url: process.env.VUE_APP_API_URL,
+        }
     },
     computed: {
         muscles() {
@@ -46,12 +48,12 @@ export default {
     margin-left: 0.25rem;
 }
 img {
-    max-width: 50px;
+    max-width: 45px;
     border-radius: 50%;
 }
 .content p {
     text-align: left;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0;
     color: rgb(0, 155, 135);
 }

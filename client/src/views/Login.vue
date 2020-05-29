@@ -13,7 +13,7 @@
         </form>
         <p>
             Don't have an account?
-            <router-link to="/register">Sign up</router-link>
+            <router-link to="/register">Sign up.</router-link>
         </p>
     </div>
 </template>
@@ -28,7 +28,7 @@ export default {
     },
     methods: {
         login() {
-            fetch('http://192.168.1.103:3000/auth/login', {
+            fetch(`${process.env.VUE_APP_API_URL}/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -81,8 +81,8 @@ h1 {
 button {
     border-radius: 4px;
     border: none;
-    padding: 0.75rem;
-    font-size: 1.1rem;
+    padding: 0.6rem;
+    font-size: 1rem;
     color: white;
     background-color: rgb(0, 155, 135);
     width: 90%;
@@ -93,6 +93,6 @@ a {
 }
 input {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
 }
 </style>

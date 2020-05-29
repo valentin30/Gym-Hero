@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         submit() {
-            fetch('http://localhost:3000/user/weight', {
+            fetch(`${process.env.VUE_APP_API_URL}/user/weight`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

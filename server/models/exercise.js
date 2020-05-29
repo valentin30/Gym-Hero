@@ -11,7 +11,7 @@ const exerciseSchema = Schema({
     },
     imageUrl: {
         type: String,
-        default: 'http://localhost:3000/images/exercise.jpg',
+        default: 'images/exercise.jpg',
     },
 })
 

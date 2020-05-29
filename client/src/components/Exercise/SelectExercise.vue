@@ -131,7 +131,7 @@ export default {
 }
 .reps-weight p {
     display: inline-block;
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: 0;
     margin-right: 1rem;
     color: rgb(0, 155, 135);
@@ -148,7 +148,7 @@ input {
     margin: 0.5rem 0.5rem 0 0;
 }
 button {
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     border: none;
     background-color: inherit;
@@ -168,7 +168,7 @@ button {
     display: inline-block;
     margin: 0;
     border-radius: 4px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     border: 1px solid white;
 }
 .selected {

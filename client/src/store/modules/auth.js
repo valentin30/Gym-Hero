@@ -25,7 +25,7 @@ const mutations = {
 }
 const actions = {
     getUser({ state, commit, dispatch }, token) {
-        fetch('http://192.168.1.103:3000/user', {
+        fetch(`${process.env.VUE_APP_API_URL}/user`, {
             headers: {
                 Authorization: token,
             },

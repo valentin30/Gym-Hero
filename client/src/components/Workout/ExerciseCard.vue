@@ -79,7 +79,7 @@ export default {
 .exercise p {
     min-width: 60px;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin: 0;
     color: #555;
 }
@@ -93,7 +93,7 @@ export default {
     padding: 1rem 0 0;
 }
 .buttons button {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: bold;
     border: none;
     background-color: inherit;

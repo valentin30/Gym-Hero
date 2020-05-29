@@ -43,7 +43,7 @@ export default {
     },
     methods: {
         signup() {
-            fetch('http://localhost:3000/auth/signup', {
+            fetch(`${process.env.VUE_APP_API_URL}/auth/signup`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -91,7 +91,6 @@ export default {
             return m
         },
     },
-
 }
 </script>
 
@@ -114,8 +113,8 @@ button {
     border-radius: 4px;
     margin-top: 0rem;
     border: none;
-    padding: 0.75rem;
-    font-size: 1.1rem;
+    padding: 0.6rem;
+    font-size: 1rem;
     color: white;
     background-color: rgb(0, 155, 135);
     width: 90%;
@@ -126,7 +125,7 @@ a {
 }
 input {
     margin-top: 0;
-    margin-bottom: 1rem;
+    margin-bottom: 0.6rem;
 }
 .wrong {
     border: 1px solid tomato;
@@ -134,9 +133,9 @@ input {
 .error {
     color: tomato;
     margin: 5px;
-    margin-top: -10px;
+    margin-top: -5px;
     padding-left: 5%;
     text-align: start;
-    font-size: 1rem;
+    font-size: 0.7rem;
 }
 </style>

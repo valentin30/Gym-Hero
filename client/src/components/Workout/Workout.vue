@@ -41,7 +41,7 @@ export default {
         if (to.path !== '/training') {
             next()
         }
-        fetch('http://192.168.1.103:3000/workout', {
+        fetch(`${process.env.VUE_APP_API_URL}/workout`, {
             method: 'POST',
             headers: {
                 Authorization: this.$store.getters.token,
