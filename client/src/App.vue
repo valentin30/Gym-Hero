@@ -4,13 +4,14 @@
 
         <Nav v-if="isAuth && mainRoute"></Nav>
         <TopBar @open="isOpen = $event" />
-        <transition
-            enter-active-class="animated slideInLeft"
-            leave-active-class="animated fadeOutLeftBig"
-        >
-            <SlideMenu v-if="isOpen" @close="isOpen = $event" />
-        </transition>
-
+        <v-touch @swipeleft="isOpen = false">
+            <transition
+                enter-active-class="animated slideInLeft"
+                leave-active-class="animated fadeOutLeftBig"
+            >
+                <SlideMenu v-if="isOpen" @close="isOpen = $event" />
+            </transition>
+        </v-touch>
         <transition
             enter-active-class="animated fadeInDown"
             leave-active-class="animated fadeOutUpBig"
@@ -33,6 +34,9 @@
                 @close="$store.dispatch('closeMessage')"
             />
         </transition>
+        <v-touch @swiperight="isOpen = true">
+            <div class="swipe-area"></div>
+        </v-touch>
     </div>
 </template>
 
@@ -74,6 +78,15 @@ export default {
 </script>
 
 <style>
+.swipe-area {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 25px;
+    /* background: fuchsia; */
+    z-index: 4;
+}
 body {
     margin: 0;
     font-family: sans-serif;

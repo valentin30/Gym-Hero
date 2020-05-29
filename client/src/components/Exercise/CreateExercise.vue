@@ -55,7 +55,7 @@ export default {
             }
         },
         submit() {
-            fetch('http://localhost:3000/exercise', {
+            fetch('http://192.168.1.103:3000/exercise', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

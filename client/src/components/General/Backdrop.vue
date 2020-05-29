@@ -12,7 +12,7 @@ div {
     background-color: white;
     opacity: 0.6;
     /* background: rgba(0, 0, 0, 0.75); */
-    z-index: 2;
+    z-index: 5;
     pointer-events: all;
     display: block;
 }

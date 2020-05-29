@@ -24,7 +24,7 @@ export default {
         }
     },
     created() {
-        fetch('http://localhost:3000/workout', {
+        fetch('http://192.168.1.103:3000/workout', {
             headers: {
                 Authorization: this.$store.getters.token,
             },

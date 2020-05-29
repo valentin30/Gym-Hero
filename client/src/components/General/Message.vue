@@ -28,7 +28,7 @@ export default {
     right: 1rem;
     margin: auto;
     max-width: 400px;
-    z-index: 3;
+    z-index: 7;
     background-color: white;
     border-radius: 8px;
     padding: 1.5rem;

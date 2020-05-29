@@ -43,7 +43,7 @@ export default {
         Exercise,
     },
     created() {
-        fetch('http://localhost:3000/exercise', {
+        fetch('http://192.168.1.103:3000/exercise', {
             headers: {
                 Authorization: this.$store.getters.token,
             },

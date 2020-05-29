@@ -38,10 +38,10 @@ export default {
         ExerciseCard,
     },
     beforeRouteLeave(to, from, next) {
-        if(to.path !== '/training'){
+        if (to.path !== '/training') {
             next()
         }
-        fetch('http://localhost:3000/workout', {
+        fetch('http://192.168.1.103:3000/workout', {
             method: 'POST',
             headers: {
                 Authorization: this.$store.getters.token,
@@ -51,10 +51,10 @@ export default {
                 exercises: this.$store.getters.exercises,
             }),
         }).then(() => {
-            if(to.path === '/training'){
+            if (to.path === '/training') {
                 next()
             }
-        })  
+        })
     },
 }
 </script>

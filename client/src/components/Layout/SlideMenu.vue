@@ -91,7 +91,7 @@ export default {
     top: 0;
     left: 0;
     width: 75%;
-    z-index: 3;
+    z-index: 6;
     height: 100vh;
     background-color: white;
     font-size: 1.3rem;

@@ -73,7 +73,7 @@ const actions = {
         commit('pushExercise', newExercise)
     },
     getWorkout({ commit, dispatch }, token) {
-        fetch('http://localhost:3000/workout/today', {
+        fetch('http://192.168.1.103:3000/workout/today', {
             headers: {
                 Authorization: token,
             },

@@ -36,7 +36,7 @@ li {
     flex-grow: 1;
     color: #555;
     text-align: center;
-    padding: 10px 0 2px;
+    padding: 12px 0 4px;
 }
 .router-link-active {
     background-color: rgb(0, 155, 135);

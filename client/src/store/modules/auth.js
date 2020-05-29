@@ -25,7 +25,7 @@ const mutations = {
 }
 const actions = {
     getUser({ state, commit, dispatch }, token) {
-        fetch('http://localhost:3000/user', {
+        fetch('http://192.168.1.103:3000/user', {
             headers: {
                 Authorization: token,
             },

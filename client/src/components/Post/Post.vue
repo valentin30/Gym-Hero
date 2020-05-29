@@ -44,7 +44,7 @@ export default {
     },
     created() {
         document.title = this.$route.params.id
-        fetch(`http://localhost:3000/posts/${this.$route.params.id}`, {
+        fetch(`http://192.168.1.103:3000/posts/${this.$route.params.id}`, {
             headers: {
                 Authorization: this.$store.state.auth.token,
             },
