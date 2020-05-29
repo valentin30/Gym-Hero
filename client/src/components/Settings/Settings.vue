@@ -86,7 +86,7 @@ ul {
 .key,
 .value {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 .value {
     color: rgb(0, 155, 135);

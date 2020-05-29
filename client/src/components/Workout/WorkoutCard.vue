@@ -40,7 +40,7 @@ export default {
 .content * {
     cursor: default;
 }
-.content{
+.content {
     padding: 0.7rem 0.5rem 0.5rem;
 }
 .body {

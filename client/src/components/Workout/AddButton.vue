@@ -14,10 +14,12 @@ div {
     cursor: pointer;
 }
 p {
-    margin: 0.25rem 0 0;
+    margin: 0.07rem 0 0;
     color: rgb(0, 155, 135);
+    font-size: 0.8rem;
 }
 i {
+    font-size: 1.1rem;
     color: rgb(0, 155, 135);
 }
 </style>

@@ -21,7 +21,7 @@ export default {
         }
     },
     created() {
-        fetch('http://localhost:3000/posts', {
+        fetch(`${process.env.VUE_APP_API_URL}/posts`, {
             headers: {
                 Authorization: this.$store.state.auth.token,
             },
@@ -48,11 +48,5 @@ ul {
     display: grid;
     grid-gap: 1.5rem;
     padding: 0.75rem;
-}
-@media (min-width: 700px) {
-    ul {
-        grid-template-columns: 20rem 20rem;
-        grid-column-gap: 1rem;
-    }
 }
 </style>

@@ -38,10 +38,10 @@ export default {
         ExerciseCard,
     },
     beforeRouteLeave(to, from, next) {
-        if(to.path !== '/training'){
+        if (to.path !== '/training') {
             next()
         }
-        fetch('http://localhost:3000/workout', {
+        fetch(`${process.env.VUE_APP_API_URL}/workout`, {
             method: 'POST',
             headers: {
                 Authorization: this.$store.getters.token,
@@ -51,10 +51,10 @@ export default {
                 exercises: this.$store.getters.exercises,
             }),
         }).then(() => {
-            if(to.path === '/training'){
+            if (to.path === '/training') {
                 next()
             }
-        })  
+        })
     },
 }
 </script>

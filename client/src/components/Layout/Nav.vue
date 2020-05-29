@@ -47,7 +47,7 @@ li:hover {
     color: white;
 }
 .material-icons {
-    font-size: 2rem;
+    font-size: 1.5rem;
     align-self: center;
 }
 @media (min-width: 700px) {

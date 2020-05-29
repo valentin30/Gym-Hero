@@ -23,7 +23,7 @@ const mutations = {
     },
     removeExercise(state, payload) {
         state.exercises = state.exercises.filter(
-            e => e.exercise.name !== payload.name,
+            e => e.exercise.name !== payload.name
         )
     },
     setSelected(state, payload) {
@@ -48,7 +48,7 @@ const actions = {
             work: [],
         }
         const oldExercise = state.exercises.find(
-            e => e.exercise.name === exercise.name,
+            e => e.exercise.name === exercise.name
         )
         console.log('2', oldExercise)
         if (oldExercise) {
@@ -73,7 +73,7 @@ const actions = {
         commit('pushExercise', newExercise)
     },
     getWorkout({ commit, dispatch }, token) {
-        fetch('http://localhost:3000/workout/today', {
+        fetch(`${process.env.VUE_APP_API_URL}/workout/today`, {
             headers: {
                 Authorization: token,
             },

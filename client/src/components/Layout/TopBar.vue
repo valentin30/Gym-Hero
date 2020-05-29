@@ -52,10 +52,10 @@ li {
     display: block;
     color: white;
     text-decoration: none;
-    padding: 14px 14px 4px;
+    padding: 10px 12px 4px;
 }
-.material-icons:first-of-type {
-    font-size: 2rem;
+.material-icons {
+    font-size: 1.5rem;
 }
 button {
     padding: 0 2px;

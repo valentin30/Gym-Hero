@@ -24,7 +24,7 @@ export default {
         }
     },
     created() {
-        fetch('http://localhost:3000/workout', {
+        fetch(`${process.env.VUE_APP_API_URL}/workout`, {
             headers: {
                 Authorization: this.$store.getters.token,
             },
@@ -39,20 +39,17 @@ export default {
                         header: 'Oops!',
                         message: json.message + '.',
                     })
-                }
-                if (json.workouts.length === 0) {
-                    setTimeout(() => {
-                        this.workouts = json.workouts
+                } else {
+                    this.workouts = json.workouts
+                        .filter(w => w.exercises.length !== 0)
+                        .reverse()
+                    if (this.workouts.length === 0) {
                         this.$store.dispatch('displayMessage', {
                             header: 'Oops!',
                             message:
                                 "Looks like you haven't logged any workouts.",
                         })
-                    }, 1000)
-                } else {
-                    this.workouts = json.workouts
-                        .filter(w => w.exercises.length !== 0)
-                        .reverse()
+                    }
                 }
             })
     },

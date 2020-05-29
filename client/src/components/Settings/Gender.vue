@@ -30,7 +30,7 @@ export default {
     },
     methods: {
         submit() {
-            fetch('http://localhost:3000/user/gender', {
+            fetch(`${process.env.VUE_APP_API_URL}/user/gender`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

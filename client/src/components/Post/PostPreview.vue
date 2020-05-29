@@ -36,7 +36,7 @@ img {
     border-top-right-radius: inherit;
 }
 h3 {
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
     margin: 0;
 }
 </style>

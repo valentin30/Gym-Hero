@@ -30,7 +30,7 @@ export default {
         submitChange() {
             const formData = new FormData()
             formData.append('image', this.image)
-            fetch('http://localhost:3000/user/photo', {
+            fetch(`${process.env.VUE_APP_API_URL}/user/photo`, {
                 method: 'PUT',
                 headers: {
                     Authorization: this.$store.getters.token,

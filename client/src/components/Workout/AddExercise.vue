@@ -43,7 +43,7 @@ export default {
         Exercise,
     },
     created() {
-        fetch('http://localhost:3000/exercise', {
+        fetch(`${process.env.VUE_APP_API_URL}/exercise`, {
             headers: {
                 Authorization: this.$store.getters.token,
             },
@@ -87,7 +87,7 @@ export default {
 <style scoped>
 .head {
     position: fixed;
-    top: 3.5rem;
+    top: 3rem;
     left: 0;
     right: 0;
     margin: auto;

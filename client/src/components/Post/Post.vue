@@ -44,7 +44,7 @@ export default {
     },
     created() {
         document.title = this.$route.params.id
-        fetch(`http://localhost:3000/posts/${this.$route.params.id}`, {
+        fetch(`${process.env.VUE_APP_API_URL}/posts/${this.$route.params.id}`, {
             headers: {
                 Authorization: this.$store.state.auth.token,
             },
@@ -52,7 +52,7 @@ export default {
             .then(response => response.json())
             .then(json => {
                 if (json.message) {
-                    if(json.status === 403){
+                    if (json.status === 403) {
                         return this.$store.dispatch('logout')
                     }
                     return this.$store.dispatch('displayMessage', {
@@ -72,7 +72,7 @@ img {
     width: 100%;
 }
 h3 {
-    padding: 0.75rem;
+    padding: 0.5rem 0.75rem;
     margin: 0;
 }
 div {
@@ -81,17 +81,17 @@ div {
     display: flex;
     max-width: 700px;
     flex-direction: column;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 .spinner {
     box-shadow: none;
 }
 .paragraph {
     padding: 1rem;
-    font-size: 1.2rem;
+    font-size: 0.9rem;
     margin-bottom: 0;
     box-sizing: border-box;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 p {
     margin: 0;
