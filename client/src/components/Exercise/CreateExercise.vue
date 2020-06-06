@@ -90,8 +90,9 @@ export default {
 
 <style scoped>
 .section {
-    overflow: scroll;
-    max-height: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .some {
     max-width: 400px;
@@ -105,10 +106,15 @@ export default {
     font-size: 1rem;
     margin-bottom: 0.2rem;
     border: 1px solid white;
+    margin: 0.25rem;
 }
 .selected {
     background-color: whitesmoke;
     border-color: rgb(207, 207, 207);
     color: rgb(0, 155, 135);
+}
+input,
+button {
+    width: 90%;
 }
 </style>

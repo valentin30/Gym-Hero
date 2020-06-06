@@ -16,7 +16,7 @@ div {
 p {
     margin: 0.07rem 0 0;
     color: rgb(0, 155, 135);
-    font-size: 0.8rem;
+    font-size: 0.9rem;
 }
 i {
     font-size: 1.1rem;

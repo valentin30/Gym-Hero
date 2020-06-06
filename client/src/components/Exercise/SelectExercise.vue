@@ -169,7 +169,7 @@ button {
     margin: 0;
     border-radius: 4px;
     font-size: 1rem;
-    border: 1px solid white;
+    border: 1px solid transparent;
 }
 .selected {
     background-color: rgb(235, 235, 235);

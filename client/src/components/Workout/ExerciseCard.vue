@@ -23,10 +23,8 @@
             <div class="buttons" v-if="!readOnly">
                 <router-link
                     tag="button"
-                    @click.native="
-                        $store.commit('removeExercise', exercise.exercise)
-                    "
                     class="success"
+                    @click="$store.commit('removeExercise', exercise.exercise)"
                     :to="{
                         path: '/workout/add-exercise',
                         query: { editing: exercise.exercise._id },

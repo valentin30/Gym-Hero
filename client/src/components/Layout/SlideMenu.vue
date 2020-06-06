@@ -4,7 +4,11 @@
             <button class="close" @click="$emit('close', false)">
                 <i class="material-icons">clear</i>
             </button>
-            <img :src="`${avatar}/${user.imageUrl}`" alt="avatar" />
+            <!-- <img :src="`${avatar}/${user.imageUrl}`" alt="avatar" /> -->
+            <div
+                class="image"
+                :style="`background-image:url(${avatar}/${user.imageUrl})`"
+            ></div>
             <p>
                 <b>{{ user.name }}</b>
             </p>
@@ -104,15 +108,22 @@ export default {
     background-color: rgb(0, 155, 135);
     color: white;
     display: flex;
+    flex-direction: column;
 }
 .header p {
     font-size: 1.1rem;
     margin-top: 0.5rem;
-    padding-left: 0.6rem;
-    align-self: flex-end;
+    align-self: flex-start;
 }
 img {
     vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.image {
+    background-position: center center;
+    background-size: cover;
     width: 70px;
     height: 70px;
     border-radius: 50%;

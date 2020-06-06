@@ -63,7 +63,7 @@ export default {
                 this.allExercises = json.exercises
                 if (this.$route.query.editing) {
                     this.allExercises.forEach(element => {
-                        if (element._id == this.$route.query.editing) {
+                        if (element._id === this.$route.query.editing) {
                             this.$store.commit('setSelected', element)
                         }
                     })
