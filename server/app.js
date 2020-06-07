@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const multer = require('multer')
 const path = require('path')
+require('dotenv').config()
 
 const { fileStorage, fileFilter } = require('./helpers/multerConfig')
 
@@ -18,14 +19,14 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*')
     res.setHeader(
         'Access-Control-Allow-Methods',
-        'OPTIONS, GET, POST, PUT, PATCH, DELETE',
+        'OPTIONS, GET, POST, PUT, PATCH, DELETE'
     )
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
     next()
 })
 app.use(bodyParser.json())
 app.use(
-    multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'),
+    multer({ storage: fileStorage, fileFilter: fileFilter }).single('image')
 )
 app.use('/images', express.static(path.join(__dirname, 'images')))
 
@@ -42,14 +43,11 @@ app.use((error, req, res, next) => {
 })
 
 mongoose
-    .connect(
-        'mongodb+srv://valio:lara@fitnessappdb-mblze.mongodb.net/TheGymHero',
-        {
-            useFindAndModify: false,
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        },
-    )
+    .connect(process.env.CONNECTION_STRING, {
+        useFindAndModify: false,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    })
     .then(conn => {
         console.log('Database Connected')
         app.listen(3000)
