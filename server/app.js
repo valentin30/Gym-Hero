@@ -37,7 +37,6 @@ app.use('/exercise', exerciseRoutes)
 app.use('/workout', workoutRoutes)
 
 app.use((error, req, res, next) => {
-    console.log(error)
     const { statusCode, message } = error
     res.status(statusCode).json({ message, status: statusCode })
 })
